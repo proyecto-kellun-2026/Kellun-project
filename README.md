@@ -23,7 +23,6 @@ Todas las historias están registradas como GitHub Issues.
 ## Requisitos Extrafuncionales
 Ver: [ReqExtrafuncionales.md](./ReqExtrafuncionales.md)
 
-
 ## Entidades del Dominio
 [Diagrama o descripción de entidades, atributos y relaciones]
 
@@ -35,9 +34,12 @@ Ver: [ReqExtrafuncionales.md](./ReqExtrafuncionales.md)
 ## Diseño Arquitectónico
 Ver: [Arquitectura.md](./Arquitectura.md)
 
-
-
 ## Responsabilidades del Equipo
-| Integrante | Rol   | Ítems de la rúbrica a cargo |
-| ---------- | ----- | --------------------------- |
-| [Nombre]   | [Rol] | [Ítems]                     |
+| Integrante       | Rol           | Ítems de la rúbrica a cargo |
+| ---------------- | ------------- | --------------------------- |
+| Felipe Rojas     | Srum Master   | [Ítems]                     |
+| Raúl Sepúlveda   | Product Owner | [Ítems]                     |
+| Javiera Guerrero | Developers    | [Ítems]                     |
+| Paulo González   | Developers    | [Ítems]                     |
+| Felipe Ossándon  | Developers    | [Ítems]                     |
+
