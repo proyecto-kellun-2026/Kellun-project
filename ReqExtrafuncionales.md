@@ -14,7 +14,7 @@ Alta, Media o Baja.
 | REF-06 | Restricción del proyecto    | El presupuesto no debe exceder los CLP$25000000                | :red_circle: **Alta**     |
 | REF-07 | Restricción del proyecto    | El equipo debe de ser de máximo 5 personas                     | :orange_circle: **Media** |
 | REF-08 | Restricción técnica         | El servidor debe estar alocado en AWS                          | :orange_circle: **Media** |
-| REF-09 | Calidad de servicio (esc.)  | El sistema debe soportar al menos 1000 usuarios simultáneos    | :orange_circle: **Media** |
+| REF-09 | Calidad de servicio (esc.)  | El sistema debe soportar al menos 1000 usuarios simultáneos    | :red_circle: **Alta**     |
 | REF-10 | Calidad de servicio (inc.)  | La interfaz de la aplicación debe estar en inglés y español    | :orange_circle: **Media** |
 
 > Nota: Los requisitos de prioridad Alta deben quedar explícitamente
