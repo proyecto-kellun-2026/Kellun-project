@@ -6,19 +6,31 @@
 ## Historias de Usuario
 Todas las historias están registradas como GitHub Issues.
 
-| ID     | Nombre                                                                                                                                                                         | Issue |
-| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----- |
-| US-01  | Como voluntario, quiero poder ver los voluntariados que están activos en mi sector para poder participar en el de mayor interés                                                | #2    |
-| US-02  | Como organización, quiero tener un espacio donde mi organización y otras más podamos postear los eventos para que los voluntarios puedan verlas e inscribirse                  | #3    |
-| US-03  | Como moderador de la plataforma, quiero acceder a un panel de administración centralizado para supervisar todos los voluntariados registrados.                                 | #4    |
-| US-04  | Como voluntario, quero ver los voluntariados cercanos que estan activos para poder ayudar a mi comunidad                                                                       | #5    |
-| US-05  | Como organización, quiero poder poner los requisitos o habilidades necesarias en mi publicación, para que los voluntarios sepan desde antes si cumplen con lo que se necesita. | #6    |
-| US-06  | Como voluntario, quiero poder calificar mi experiencia con una organización, para que otros voluntarios sepan si la causa es confiable o está bien gestionada.                 | #7    |
-| US-07  | Como voluntario, quiero poder reportar irregularidades durante una actividad, para avisar al equipo de soporte si ocurre algo incorrecto.                                      | #8    |
-| US-08  | Como voluntario, quiero recibir insignias digitales cuando cumpla ciertos hitos, para poder mostrar mis logros y mi nivel de compromiso en mi perfil.                          | #9    |
-| US-09  | Como voluntario, quiero poder sincronizar mis actividades con mi calendario externo, para organizar mejor mi tiempo y no olvidar los compromisos.                              | #10   |
-| US-010 | Como voluntario, quiero gestionar la visibilidad de mi perfil para proteger mi privacidad.                                                                                     | #11   |
-| US-011 | Como voluntario, quiero ser notificado en caso de que un voluntariado visualize mi perfil, para estar al tanto de las visitas de las organizaciones                            | #12   |
+| ID    | Nombre                                         | Issue                                                                   |
+| ----- | ---------------------------------------------- | ----------------------------------------------------------------------- |
+| US-01 | Registro nuevos voluntarios                    | [#13](https://github.com/proyecto-kellun-2026/Kellun-project/issues/13) |
+| US-02 | Datos de acceso                                | [#14](https://github.com/proyecto-kellun-2026/Kellun-project/issues/14) |
+| US-03 | Descripción perfil voluntario                  | [#15](https://github.com/proyecto-kellun-2026/Kellun-project/issues/15) |
+| US-04 | Configuración de privacidad                    | [#11](https://github.com/proyecto-kellun-2026/Kellun-project/issues/11) |
+| US-05 | Logros voluntarios                             | [#9](https://github.com/proyecto-kellun-2026/Kellun-project/issues/9)   |
+| US-06 | Registro organización                          | [#16](https://github.com/proyecto-kellun-2026/Kellun-project/issues/16) |
+| US-07 | Validación perfil organización                 | [#17](https://github.com/proyecto-kellun-2026/Kellun-project/issues/17) |
+| US-08 | Búsqueda de voluntariados por ubicación        | [#18](https://github.com/proyecto-kellun-2026/Kellun-project/issues/18) |
+| US-09 | Búsqueda de voluntariados por tipo             | [#19](https://github.com/proyecto-kellun-2026/Kellun-project/issues/19) |
+| US-10 | Requisitos exigidos a voluntarios              | [#6](https://github.com/proyecto-kellun-2026/Kellun-project/issues/6)   |
+| US-11 | Cantidad de voluntarios necesarios             | [#20](https://github.com/proyecto-kellun-2026/Kellun-project/issues/20) |
+| US-12 | Duración voluntariado                          | [#21](https://github.com/proyecto-kellun-2026/Kellun-project/issues/21) |
+| US-13 | Publicación de nuevos eventos                  | [#22](https://github.com/proyecto-kellun-2026/Kellun-project/issues/22) |
+| US-14 | Categorización de eventos por habilidades      | [#23](https://github.com/proyecto-kellun-2026/Kellun-project/issues/23) |
+| US-15 | Visualización de agenda confirmada             | [#24](https://github.com/proyecto-kellun-2026/Kellun-project/issues/24) |
+| US-16 | Gestión de historial de postulaciones          | [#25](https://github.com/proyecto-kellun-2026/Kellun-project/issues/25) |
+| US-17 | Postulación a eventos                          | [#26](https://github.com/proyecto-kellun-2026/Kellun-project/issues/26) |
+| US-18 | Resolución de postulaciones                    | [#27](https://github.com/proyecto-kellun-2026/Kellun-project/issues/27) |
+| US-19 | Notificación de aceptación de postulación      | [#28](https://github.com/proyecto-kellun-2026/Kellun-project/issues/28) |
+| US-20 | Historial de notificaciones                    | [#29](https://github.com/proyecto-kellun-2026/Kellun-project/issues/29) |
+| US-21 | Recordatorio de evento próximo                 | [#30](https://github.com/proyecto-kellun-2026/Kellun-project/issues/30) |
+| US-22 | Notificación automática por cambios en eventos | [#31](https://github.com/proyecto-kellun-2026/Kellun-project/issues/31) |
+
 
 ## Requisitos Extrafuncionales
 Ver: [ReqExtrafuncionales.md](./ReqExtrafuncionales.md)
@@ -37,9 +49,9 @@ Ver: [Arquitectura.md](./Arquitectura.md)
 ## Responsabilidades del Equipo
 | Integrante       | Rol           | Ítems de la rúbrica a cargo |
 | ---------------- | ------------- | --------------------------- |
-| Felipe Rojas     | Srum Master   | [1.1-1.2-2.1]                     |
+| Felipe Rojas     | Srum Master   | [1.1-1.2-2.1]               |
 | Raúl Sepúlveda   | Product Owner | [Ítems]                     |
 | Javiera Guerrero | Developers    | [1.1-1.2-2.1-2.3]           |
 | Paulo González   | Developers    | [Ítems]                     |
-| Felipe Ossándon  | Developers    | [1.1-2.1-2.2]                   |
+| Felipe Ossándon  | Developers    | [1.1-2.1-2.2]               |
 
