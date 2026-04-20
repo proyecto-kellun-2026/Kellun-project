@@ -9,7 +9,7 @@ Justificación basada en REF priorizados:
 | REF-01 | [descripción]                            | Alta      | [explicación]                 |
 | REF-02 | [descripción]                            | Alta      | [explicación]                 |
 
-### Justificacion
+### Justificación
 
 Para el proyecto se selecciono una arquitectura Cliente-Servidor. La idea principal es abordar toda la lógica de negocio en una API robusta. Esta decisión permite garantizar una disponibilidad del 98% mediante infraestructura en la nube y asegurar un rendimiento de navegación menor a 1 segundo al descargar el procesamiento pesado del dispositivo móvil.
 
