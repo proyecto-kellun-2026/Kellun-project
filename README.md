@@ -52,6 +52,6 @@ Ver: [Arquitectura.md](./Arquitectura.md)
 | Felipe Rojas     | Srum Master   | [1.1-1.2-2.1]               |
 | Raúl Sepúlveda   | Product Owner | [Ítems]                     |
 | Javiera Guerrero | Developers    | [1.1-1.2-2.1-2.3]           |
-| Paulo González   | Developers    | [Ítems]                     |
+| Paulo González   | Developers    | [1.1-2.2-2.3]                     |
 | Felipe Ossándon  | Developers    | [1.1-2.1-2.2]               |
 
