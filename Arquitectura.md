@@ -1,6 +1,6 @@
 ## 1. Estilo Arquitectónico
 
-Estilo adoptado: [nombre del estilo, ej: Cliente-Servidor, Capas, etc.]
+Estilo adoptado: Cliente-Servidor
 
 Justificación basada en REF priorizados:
 
