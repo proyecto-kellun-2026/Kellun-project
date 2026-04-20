@@ -9,9 +9,11 @@ Justificación basada en REF priorizados:
 | REF-01 | [descripción]                            | Alta      | [explicación]                 |
 | REF-02 | [descripción]                            | Alta      | [explicación]                 |
 
-Explicación textual: [Describir por qué el estilo elegido es el más adecuado
-considerando los REF de alta prioridad. Ningún REF de alta prioridad puede
-quedar sin ser abordado.]
+### Justificacion
+
+Para el proyecto se selecciono una arquitectura Cliente-Servidor. La idea principal es abordar toda la lógica de negocio en una API robusta. Esta decisión permite garantizar una disponibilidad del 98% mediante infraestructura en la nube y asegurar un rendimiento de navegación menor a 1 segundo al descargar el procesamiento pesado del dispositivo móvil.
+
+Este modelo facilita la escalabilidad para 1000 usuarios al permitir el crecimiento horizontal del backend sin afectar la aplicación instalada. Sin embargo, se asume una dependencia total de la conexión a internet, sacrificando la funcionalidad offline en favor de la sincronización de eventos en tiempo real y una menor complejidad operativa para nuestro equipo
 
 ## 2. Diagrama de Arquitectura
 
