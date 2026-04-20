@@ -37,9 +37,9 @@ Ver: [Arquitectura.md](./Arquitectura.md)
 ## Responsabilidades del Equipo
 | Integrante       | Rol           | Ítems de la rúbrica a cargo |
 | ---------------- | ------------- | --------------------------- |
-| Felipe Rojas     | Srum Master   | [Ítems]                     |
+| Felipe Rojas     | Srum Master   | [1.1-1.2-2.1]                     |
 | Raúl Sepúlveda   | Product Owner | [Ítems]                     |
 | Javiera Guerrero | Developers    | [Ítems]                     |
 | Paulo González   | Developers    | [Ítems]                     |
-| Felipe Ossándon  | Developers    | [Ítems]                     |
+| Felipe Ossándon  | Developers    | [1.1-2.1-2.2]                   |
 
