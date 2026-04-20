@@ -24,20 +24,60 @@ Ejemplo: ![Diagrama de Arquitectura](./diagrama_arquitectura.png)]
 
 Fundamentación: [Criterio de descomposición: por dominio, capa, funcionalidad, etc.]
 
-### Módulo 1: [Nombre]
-- Responsabilidad: [qué hace este módulo]
-- Ofrece a otros módulos: [interfaces o datos que expone]
-- Depende de: [módulos de los que consume servicios]
+### Módulo 1: Interfaz de usuario.
+- Responsabilidad: Proporciona un medio de interacción para que el voluntario realice búsquedas, configure su perfil y gestione los voluntariados en los que participará.
+- Ofrece a otros módulos: Solicitudes realizadas por los voluntarios.
+- Depende de: Módulo 3.
 
-### Módulo 2: [Nombre]
-- Responsabilidad: [qué hace este módulo]
-- Ofrece a otros módulos: [interfaces o datos que expone]
-- Depende de: [módulos de los que consume servicios]
+### Módulo 2: Interfaz de administración.
+- Responsabilidad: Proporciona medio de interacción entre organización y servidor, permitiéndole realizar resolución de solicitudes, publicación de eventos, visualización de perfiles y configuración de su propio perfil.
+- Ofrece a otros módulos: Postulación y visualización de eventos.
+- Depende de: Módulo 4.
 
-### Módulo N: [Nombre]
-- Responsabilidad: ...
-- Ofrece a otros módulos: ...
-- Depende de: ...
+### Módulo 3: Motor de Filtrado y Consultas.
+- Responsabilidad: Procesar los criterios de búsqueda del usuario para enviarlos a la API.
+- Ofrece a otros módulos: Parámetros de consulta (query parameters) validados.
+- Depende de: Módulo 4.
+
+### Módulo 4: API
+- Responsabilidad: Actuar como intermediario para recibir peticiones del cliente y delegarlas al servidor.
+- Ofrece a otros módulos: Interfaz de comunicación.
+- Depende de: Módulos 5, 6, 7 y 8.
+
+### Módulo 5: Motor de Búsqueda
+- Responsabilidad: Ejecutar la búsqueda y devolver la información según los criterios recibidos.
+- Ofrece a otros módulos: Resultados filtrados y ordenados.
+- Depende de: Módulo 10.
+
+### Módulo 6: Autenticaciones
+- Responsabilidad: Gestionar el inicio de sesión, validación de credenciales y permisos de acceso.
+- Ofrece a otros módulos: Verificación de identidad y tokens de seguridad.
+- Depende de: Módulo 4 y 9.
+
+### Módulo 7: Publicación de eventos
+- Responsabilidad: Gestionar la creación, edición y eliminación de publicaciones de voluntariado.
+- Ofrece a otros módulos: Registro y actualización de actividades.
+- Depende de: Módulo 10 (Base de datos de eventos).
+
+### Módulo 8: Notificaciones
+- Responsabilidad: Generar y enviar avisos a los usuarios ante eventos relevantes.
+- Ofrece a otros módulos: Servicio de alertas.
+- Depende de: Módulo 4 y Módulo 10 (para obtener datos de contacto).
+
+### Módulo 9: Base de datos de perfiles
+- Responsabilidad: Almacenar identificación, datos personales, configuraciones de privacidad y logros.
+- Ofrece a otros módulos: Datos persistentes de usuarios.
+- Depende de: Ninguno.
+
+### Módulo 10: Base de datos de Eventos y Publicaciones
+- Responsabilidad: Información de eventos publicados, el estado de las postulaciones y la agenda confirmada.
+- Ofrece a otros módulos: Persistencia de eventos y registros de postulación.
+- Depende de: Ninguno.
+
+### Módulo 11: Almacenamiento de Archivos
+- Responsabilidad: Gestionar el repositorio físico de documentos de verificación y archivos multimedia.
+- Ofrece a otros módulos: Acceso a archivos y documentos de identidad.
+- Depende de: Ninguno.
 
 ## 4. Decisiones de Diseño
 
