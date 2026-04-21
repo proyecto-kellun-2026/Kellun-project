@@ -39,7 +39,170 @@ Todas las historias están registradas como GitHub Issues.
 Ver: [ReqExtrafuncionales.md](./ReqExtrafuncionales.md)
 
 ## Entidades del Dominio
-[Diagrama o descripción de entidades, atributos y relaciones]
+
+```mermaid
+classDiagram
+
+class Usuario{
+
+  nombre : String
+  correo : String
+  contraseña : String
+  fotoPerfil
+  telefono : String
+
+  editarPerfil()
+  registrarse()
+}
+
+class Voluntario{
+
+  edad : int
+  areasDeInteres[] : list
+  horasTotales : int
+  eventosAsistidos[] : list
+  organizacionesColaboradas[] : list
+  habilidades[] : list
+
+  postularEvento()
+  editarPrivacidad()
+}
+
+class Organizacion{
+
+  anioFundacion : int
+  descripcion : String
+  redesSociales[] : list
+  certificacionesDoc
+
+  crearEvento()
+  validarVoluntario()
+  gestionarPublicaciones()
+  subirDocumentos()
+}
+
+class Evento{
+
+  titulo : String
+  fecha : String
+  duracion : int
+  horaInicio : String
+  ubicacion : String
+  cuposVoluntarios : int
+  estado : String
+  imagenReferencial
+
+  actualizarEstado()
+  cancelarEvento()
+  obtenerCantidadVoluntarios()
+}
+
+class Notificacion{
+
+  titulo : String
+  mensaje : String
+  fecha : String
+
+  marcarComoLeido()
+  recordatorio()
+}
+
+class Logro{
+
+  nombreLogro : String
+  fechaObtencion : String
+  icono
+  descripcion : String
+
+  otorgarInsignia()
+}
+
+Usuario <|-- Voluntario
+Usuario <|-- Organizacion
+
+Organizacion *-- "1..*" Evento : crea
+Voluntario o-- "0..*" Logro : obtiene
+
+Voluntario "0..*" -- "0..*" Evento : participa
+Usuario "1" -- "0..*" Notificacion : recibe
+```
+
+### Entidad Usuario:
+#### Atributo
+- nombre: String
+- correo: String
+- contraseña: String
+- fotoPerfil
+- telefono: String
+#### Operaciones
+- editarPerfil
+- registrarse
+### Entidad Voluntario (Usuario):
+#### Atributo
+- edad: int
+- areasDeInteres[]: list
+- horasTotales: int
+- eventosAsistidos[]: list
+- organizacionesColaboradas[]: list
+- habilidades[]: list
+#### Operaciones
+- postularEvento
+- editarPrivacidad
+
+### Entidad Organización (Usuario):
+#### Atributo
+- anioFundacion: int
+- descripcion: : String
+- redesSociales[]: list
+- certificacionesDoc
+#### Operaciones
+- crearEvento
+- validarVoluntario
+- gestionarPublicaciones
+- subirDocumentos
+
+### Entidad Evento:
+#### Atributo
+- titulo: String
+- fecha: String
+- duracion: int
+- horaInicio: String
+- ubicacion: String
+- cuposVoluntarios: int
+- estado: String
+- imagenReferencial
+#### Operaciones
+- actualizarEstado
+- cancelarEvento
+- obtenerCantidadVoluntarios
+
+### Entidad Notificación:
+#### Atributo
+- titulo: String
+- mensaje: String
+- fecha: String
+#### Operaciones
+- marcarComoLeido
+- recordatorio
+
+### Entidad Logro:
+#### Atributo
+- nombreLogro: String
+- fechaObtencion: String
+- icono
+- descripcion: String
+#### Operaciones
+- otogarInsignia
+
+| **Relación**                                                | **Tipo de Relación** | **Cardinalidad** |
+| ----------------------------------------------------------- | -------------------- | ---------------- |
+| **Usuario (Padre) $\rightarrow$ Voluntario / Organización** | **Herencia**         | 1:1              |
+| **Organización $\rightarrow$ Evento**                       | **Composición**      | 1:N              |
+| **Voluntario $\rightarrow$ Logro**                          | **Agregación**       | 1:N              |
+| **Voluntario $\leftrightarrow$ Evento**                     | **Asociación**       | N:M              |
+| **Usuario $\rightarrow$ Notificación**                      | **Asociación**       | 1:N              |
+
+
 
 ## Mockups
 | Mockup                          | Historia de usuario relacionada          |
