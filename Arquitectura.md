@@ -25,7 +25,7 @@ Para el proyecto se seleccionó una arquitectura Event-Driven. La idea principal
 
 Este modelo facilita la escalabilidad para 1000 usuarios simultáneos al permitir el crecimiento horizontal e independiente de los usuarios según la carga de eventos generada por las interacciones con las publicaciones. Debido al bajo acoplamiento de este estilo, podemos realizar cambios en módulos específicos sin comprometer la estabilidad del resto del sistema. Con esto, asumimos una mayor complejidad en la trazabilidad de los procesos a cambio de priorizar la escalabilidad masiva y la respuesta en tiempo real ante las acciones de los voluntarios y las organizaciones.
 
-Sin embargo, este modelo implica ciertos sacrificios, por un lado, las respuestas no siempre son instantaneas, el usuario puede sentir que su acción ya terminó, pero como los procesos siguen ocurriendo en el fondo. Por otro lado, ahora dependemos totalmente de un "mensajero" central que reparte la información entre las partes. Si este intermediario llega a fallar, nadire podrá comunicarse entre sí, dejando el sistema inoperante aunque el resto de la aplicación esté funcionando bien
+Sin embargo, este modelo implica ciertos sacrificios, por un lado, las respuestas no siempre son instantaneas, el usuario puede sentir que su acción ya terminó, pero como los procesos siguen ocurriendo en el fondo. Por otro lado, ahora dependemos totalmente de un "mensajero" central que reparte la información entre las partes. Si este intermediario llega a fallar, nadire podrá comunicarse entre sí, dejando el sistema inoperante aunque el resto de la aplicación esté funcionando bien.
 
 ## 2. Diagrama de Arquitectura
 
