@@ -29,8 +29,7 @@ Sin embargo, este modelo implica ciertos sacrificios, por un lado, las respuesta
 
 ## 2. Diagrama de Arquitectura
 
-[Insertar diagrama que muestre el estilo y los módulos.
-Ejemplo: ![Diagrama de Arquitectura](./diagrama_arquitectura.png)]
+<img width="601" height="351" alt="Diagrama sin título drawio(1)" src="https://github.com/user-attachments/assets/9c1040c6-68b6-4eae-98bc-fd9baf6a3c40" />
 
 ## 3. Descomposición Modular
 
