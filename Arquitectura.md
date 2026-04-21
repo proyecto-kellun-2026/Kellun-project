@@ -29,7 +29,7 @@ Sin embargo, este modelo implica ciertos sacrificios, por un lado, las respuesta
 
 ## 2. Diagrama de Arquitectura
 
-<img width="601" height="351" alt="Diagrama sin título drawio(1)" src="https://github.com/user-attachments/assets/9c1040c6-68b6-4eae-98bc-fd9baf6a3c40" />
+<img width="601" height="351" alt="Diagrama sin título drawio" src="https://github.com/user-attachments/assets/36d0dcf1-9ce8-4459-9563-5aff97c94324" />
 
 ## 3. Descomposición Modular
 
