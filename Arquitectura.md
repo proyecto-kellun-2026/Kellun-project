@@ -35,60 +35,40 @@ Sin embargo, este modelo implica ciertos sacrificios, por un lado, las respuesta
 
 Fundamentación: Por funcionalidad
 
-### Módulo 1: Interfaz de usuario.
-- Responsabilidad: Proporciona un medio de interacción para que el voluntario realice búsquedas, configure su perfil y gestione los voluntariados en los que participará.
-- Ofrece a otros módulos: Solicitudes realizadas por los voluntarios.
-- Depende de: Módulo 3.
-
-### Módulo 2: Interfaz de administración.
-- Responsabilidad: Proporciona medio de interacción entre organización y servidor, permitiéndole realizar resolución de solicitudes, publicación de eventos, visualización de perfiles y configuración de su propio perfil.
-- Ofrece a otros módulos: Postulación y visualización de eventos.
-- Depende de: Módulo 4.
-
-### Módulo 3: Motor de Filtrado y Consultas.
-- Responsabilidad: Procesar los criterios de búsqueda del usuario para enviarlos a la API.
-- Ofrece a otros módulos: Parámetros de consulta (query parameters) validados.
-- Depende de: Módulo 4.
-
-### Módulo 4: API
-- Responsabilidad: Actuar como intermediario para recibir peticiones del cliente y delegarlas al servidor.
-- Ofrece a otros módulos: Interfaz de comunicación.
-- Depende de: Módulos 5, 6, 7 y 8.
-
-### Módulo 5: Motor de Búsqueda
+### Módulo 1: Búsqueda.
 - Responsabilidad: Ejecutar la búsqueda y devolver la información según los criterios recibidos.
-- Ofrece a otros módulos: Resultados filtrados y ordenados.
-- Depende de: Módulo 10.
+- Ofrece a otros módulos: Información requerida según criterios.
+- Depende de: Módulo 4, 6 y 7.
 
-### Módulo 6: Autenticaciones
-- Responsabilidad: Gestionar el inicio de sesión, validación de credenciales y permisos de acceso.
-- Ofrece a otros módulos: Verificación de identidad y tokens de seguridad.
-- Depende de: Módulo 4 y 9.
+### Módulo 2: Inscripciones.
+- Responsabilidad: Gestionar la postulación y resolución de inscripciones.
+- Ofrece a otros módulos: Información sobre voluntario solicitante y estado de resolución.
+- Depende de: Módulo 4, 6 y 7.
 
-### Módulo 7: Publicación de eventos
-- Responsabilidad: Gestionar la creación, edición y eliminación de publicaciones de voluntariado.
-- Ofrece a otros módulos: Registro y actualización de actividades.
-- Depende de: Módulo 10 (Base de datos de eventos).
-
-### Módulo 8: Notificaciones
+### Módulo 3: Notificaciones.
 - Responsabilidad: Generar y enviar avisos a los usuarios ante eventos relevantes.
-- Ofrece a otros módulos: Servicio de alertas.
-- Depende de: Módulo 4 y Módulo 10 (para obtener datos de contacto).
+- Ofrece a otros módulos: alertas sobre actualizaciones y nuevas entradas.
+- Depende de: Módulo 2, 4, 5, 6 y 7
 
-### Módulo 9: Base de datos de perfiles
-- Responsabilidad: Almacenar identificación, datos personales, configuraciones de privacidad y logros.
-- Ofrece a otros módulos: Datos persistentes de usuarios.
-- Depende de: Ninguno.
+### Módulo 4: Administración consultas
+- Responsabilidad: Procesar, recibir y entregar consultas.
+- Ofrece a otros módulos: Enrutar consultas a módulos respectivos.
+- Depende de: No tiene dependencias.
 
-### Módulo 10: Base de datos de Eventos y Publicaciones
-- Responsabilidad: Información de eventos publicados, el estado de las postulaciones y la agenda confirmada.
-- Ofrece a otros módulos: Persistencia de eventos y registros de postulación.
-- Depende de: Ninguno.
+### Módulo 5: Eventos.
+- Responsabilidad: Gestionar la creación, edición y eliminación de publicaciones de eventos.
+- Ofrece a otros módulos: Información acerca de los eventos.
+- Depende de: Módulo 1, 4 y 7.
 
-### Módulo 11: Almacenamiento de Archivos
-- Responsabilidad: Gestionar el repositorio físico de documentos de verificación y archivos multimedia.
-- Ofrece a otros módulos: Acceso a archivos y documentos de identidad.
-- Depende de: Ninguno.
+### Módulo 6: Interfaz de Voluntario.
+- Responsabilidad: Proporciona un medio de interacción para que el voluntario configure su perfil y gestione los voluntariados en los que participará.
+- Ofrece a otros módulos: Solicitudes de participación e información de perfil de voluntario.
+- Depende de: Módulos 1, 2, 3 y 4.
+
+### Módulo 7: Interfaz de organización.
+- Responsabilidad: Proporciona medio de interacción entre organización y servidor, permitiéndole realizar resolución de solicitudes, publicación de eventos, visualización de perfiles y configuración de su propio perfil.
+- Ofrece a otros módulos: Resolución de eventos, visualización de información de eventos.
+- Depende de: Módulos 3, 4 y 5.
 
 ## 4. Decisiones de Diseño
 
