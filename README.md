@@ -222,9 +222,9 @@ Ver: [Arquitectura.md](./Arquitectura.md)
 ## Responsabilidades del Equipo
 | Integrante       | Rol           | Ítems de la rúbrica a cargo |
 | ---------------- | ------------- | --------------------------- |
-| Felipe Rojas     | Srum Master   | [1.1-1.2-2.1]               |
-| Raúl Sepúlveda   | Product Owner | [Ítems]                     |
+| Felipe Rojas     | Scrum Master   | [1.1-1.2-2.1-2.4]          |
+| Raúl Sepúlveda   | Product Owner | [1.2-2.1]                   |
 | Javiera Guerrero | Developers    | [1.1-1.2-2.1-2.3]           |
 | Paulo González   | Developers    | [1.1-2.2-2.3]               |
-| Felipe Ossándon  | Developers    | [1.1-2.1-2.2]               |
+| Felipe Ossándon  | Developers    | [1.1-2.1-2.2-2.4]           |
 
