@@ -39,12 +39,14 @@ Ver: [ReqExtrafuncionales.md](./ReqExtrafuncionales.md)
 [Diagrama o descripción de entidades, atributos y relaciones]
 
 ## Mockups
-| Mockup                          | Historia de usuario relacionada |
-| ------------------------------- | ------------------------------- |
-| [Mockup 1](./img/Mockups-1.png) | US-01, US-02                    |
-| [Mockup 2](./img/Mockups-2.png) | US-03, US-04, US-05             |
-| [Mockup 3](./img/Mockups-3.png) | US-06                           |
-| [Mockup 4](./img/Mockups-4.png) | US-07                           |
+| Mockup                          | Historia de usuario relacionada   |
+| ------------------------------- | --------------------------------- |
+| [Mockup 1](./img/Mockups-1.png) | US-01, US-02                      |
+| [Mockup 2](./img/Mockups-2.png) | US-03, US-04, US-05               |
+| [Mockup 3](./img/Mockups-3.png) | US-06                             |
+| [Mockup 4](./img/Mockups-4.png) | US-07                             |
+| [Mockup 5](./img/Mockups-5.png) | US-09, US-10, US-11, US-12, US-14 |
+| [Mockup 6](./img/Mockups-6.png) | US-13                             |
 
 ## Diseño Arquitectónico
 Ver: [Arquitectura.md](./Arquitectura.md)
