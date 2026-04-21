@@ -47,6 +47,7 @@ Ver: [ReqExtrafuncionales.md](./ReqExtrafuncionales.md)
 | [Mockup 4](./img/Mockups-4.png) | US-07                             |
 | [Mockup 5](./img/Mockups-5.png) | US-09, US-10, US-11, US-12, US-14 |
 | [Mockup 6](./img/Mockups-6.png) | US-13                             |
+| [Mockup 7](./img/Mockups-7.png) | US-19, US-20, US-21, US-22        |
 
 ## Diseño Arquitectónico
 Ver: [Arquitectura.md](./Arquitectura.md)
