@@ -50,6 +50,8 @@ A la entidad Notificacion se le agrego la operacion enviarNotificacion
 Se agregaron las relaciones siguientes:
 Usuario recibe Notificaciones
 Eventos genera Notificaciones
+
+```mermaid
 classDiagram
     class Usuario{
         nombre : String
@@ -132,6 +134,7 @@ classDiagram
 
     Evento ..> Notificacion : genera
 
+```
 
 
 
