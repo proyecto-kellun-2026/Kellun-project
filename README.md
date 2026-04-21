@@ -1,7 +1,10 @@
 # Kellun
 
 ## Descripción del sistema
-[Breve descripción del problema y solución propuesta]
+Para las personas interesadas en hacer voluntariados, no es fácil encontrar un espacio accesible para buscar de manera centralizada eventos a beneficencia confiables y cerca de tu zona geográfica. Para eso es el proyecto Kellun, el cual permite solucionar el problema de manera intuitiva y sin complicaciones, permitiendo a los voluntarios registrados acceder a información de voluntariados cerca de su zona y ver detalles del mismo, tales como: información sobre el evento, número de personas participantes y requerimientos para postularse, entre otros; permitiéndole inscribirse para participar en el evento.
+
+Como organización dedicada a la búsqueda de voluntarios, el alcance suele depender del boca a boca y de las redes sociales. Con Kellun, podrás conectar directamente con personas genuinamente interesadas en hacer voluntariado, accediendo a perfiles detallados e historial de cada postulante.
+Además, la plataforma pone a tu disposición un portal intuitivo para gestionar la aceptación de voluntarios, permitiéndote establecer requisitos de ingreso personalizados: documentos, rango de edad, intereses y habilidades específicas según las necesidades de tu organización.
 
 ## Historias de Usuario
 Todas las historias están registradas como GitHub Issues.
