@@ -1,6 +1,6 @@
 ## 1. Estilo Arquitectónico
 
-Estilo adoptado: Cliente-Servidor
+Estilo adoptado: Event-Driven
 
 Justificación basada en REF priorizados:
 
@@ -33,7 +33,7 @@ Sin embargo, este modelo implica ciertos sacrificios, por un lado, las respuesta
 
 ## 3. Descomposición Modular
 
-Fundamentación: [Criterio de descomposición: por dominio, capa, funcionalidad, etc.]
+Fundamentación: Por funcionalidad
 
 ### Módulo 1: Interfaz de usuario.
 - Responsabilidad: Proporciona un medio de interacción para que el voluntario realice búsquedas, configure su perfil y gestione los voluntariados en los que participará.
@@ -93,7 +93,12 @@ Fundamentación: [Criterio de descomposición: por dominio, capa, funcionalidad,
 ## 4. Decisiones de Diseño
 
 ### Decisión 1
-- Decisión: [qué se decide]
-- Motivación: [por qué, referenciando REF si aplica]
-- Alternativas consideradas: [qué otras opciones se evaluaron]
-- Impacto: [en qué módulos o REF afecta]
+- Decisión: Usar estilo de arquitectura Event-Driven
+- Motivación: Debido a que se prioriza la modularidad (REF-05, REF-06)
+- Alternativas consideradas: Modelo Cliente-Servidor
+- Impacto: Impacta el tiempo de respuesta
+### Decisión 2 
+- Decisión: Usar criterio de modulariazión por funcionalidad 
+- Motivación: La complejidad en este criterio no es tan alta ni tan baja comparado con las otras alternativas
+- Alternativas consideradas: Por capas y por dominio 
+- Impacto: El diseño del diagrama de arquitectura
