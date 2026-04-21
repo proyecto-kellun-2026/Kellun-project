@@ -41,7 +41,7 @@ Ver: [ReqExtrafuncionales.md](./ReqExtrafuncionales.md)
 ## Mockups
 | Mockup          | Historia de usuario relacionada |
 | --------------- | ------------------------------- |
-| [link o imagen] | US-XX                           |
+| [Mockup 3](./img/Mockups-US-3.png) | US-03                           |
 
 ## Diseño Arquitectónico
 Ver: [Arquitectura.md](./Arquitectura.md)
