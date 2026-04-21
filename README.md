@@ -39,9 +39,12 @@ Ver: [ReqExtrafuncionales.md](./ReqExtrafuncionales.md)
 [Diagrama o descripción de entidades, atributos y relaciones]
 
 ## Mockups
-| Mockup          | Historia de usuario relacionada |
-| --------------- | ------------------------------- |
-| ![Mockup 3](./img/Mockups-US-3.png) | US-03                           |
+| Mockup                          | Historia de usuario relacionada |
+| ------------------------------- | ------------------------------- |
+| [Mockup 1](./img/Mockups-1.png) | US-01, US-02                    |
+| [Mockup 2](./img/Mockups-2.png) | US-03, US-04, US-05             |
+| [Mockup 3](./img/Mockups-3.png) | US-06                           |
+| [Mockup 4](./img/Mockups-4.png) | US-07                           |
 
 ## Diseño Arquitectónico
 Ver: [Arquitectura.md](./Arquitectura.md)
@@ -52,6 +55,6 @@ Ver: [Arquitectura.md](./Arquitectura.md)
 | Felipe Rojas     | Srum Master   | [1.1-1.2-2.1]               |
 | Raúl Sepúlveda   | Product Owner | [Ítems]                     |
 | Javiera Guerrero | Developers    | [1.1-1.2-2.1-2.3]           |
-| Paulo González   | Developers    | [1.1-2.2-2.3]                     |
+| Paulo González   | Developers    | [1.1-2.2-2.3]               |
 | Felipe Ossándon  | Developers    | [1.1-2.1-2.2]               |
 
