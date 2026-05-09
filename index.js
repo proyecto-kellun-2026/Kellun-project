@@ -1,8 +1,31 @@
 const express = require('express');
 const db      = require('./db');
-const app     = express();
+const swaggerUi    = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
 
+const app     = express();
 app.use(express.json());
+
+const swaggerSpec = swaggerJsdoc({
+  definition: {
+    openapi: '3.0.0',
+    info: { title: 'API voluntariado', version: '1.0.0',
+            description: 'API para gestionar aplicacion Kellun' }
+  },
+  apis: ['./index.js']
+});
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+
+/**
+ * @swagger
+ * /logros:
+ *   get:
+ *     summary: Lista todos los Logros
+ *     responses:
+ *       200:
+ *         description: Array de Logros
+ */
 
 // GET /logros
 app.get('/logros', (req, res) => {
@@ -10,7 +33,25 @@ app.get('/logros', (req, res) => {
   res.json(logros);
 });
 
-
+/**
+ * @swagger
+ * /logros:
+ *   post:
+ *     summary: Crea un nuevo logro
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               nombreLogro:     { type: string }
+ *               fechaObtencion: { type: string }
+ *               descripcion:   { type: string }
+ *     responses:
+ *       201:
+ *         description: Logro creado
+ */
 // POST /logros
 app.post('/logros', (req, res) => {
   const { nombreLogro, fechaObtencion, descripcion } = req.body;
@@ -20,6 +61,33 @@ app.post('/logros', (req, res) => {
   res.status(201).json({ idLogro: result.lastInsertRowid, nombreLogro, fechaObtencion, descripcion });
 });
 
+
+/**
+ * @swagger
+ * /logros/{idLogro}:
+ *   put:
+ *     summary: Modifica un logro existente
+ *     parameters:
+ *       - in: path
+ *         name: idLogro
+ *         required: true
+ *         schema: { type: integer }
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               nombreLogro:     { type: string }
+ *               fechaObtencion: { type: string }
+ *               descripcion:   { type: string }
+ *     responses:
+ *       200:
+ *         description: Logro actualizado
+ *       404:
+ *         description: No encontrado
+ */
 
 // PUT /logros/:id
 app.put('/logros/:idLogro', (req, res) => {
@@ -31,6 +99,22 @@ app.put('/logros/:idLogro', (req, res) => {
   res.json({ mensaje: 'Logro actualizado' });
 });
 
+/**
+ * @swagger
+ * /logros/{idLogro}:
+ *   delete:
+ *     summary: Elimina un logro
+ *     parameters:
+ *       - in: path
+ *         name: idLogro
+ *         required: true
+ *         schema: { type: integer }
+ *     responses:
+ *       200:
+ *         description: Logro eliminado
+ *       404:
+ *         description: No encontrado
+ */
 
 // DELETE /logros/:id
 app.delete('/logros/:idLogro', (req, res) => {
