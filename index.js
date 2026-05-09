@@ -10,7 +10,11 @@ const swaggerSpec = swaggerJsdoc({
   definition: {
     openapi: '3.0.0',
     info: { title: 'API voluntariado', version: '1.0.0',
-            description: 'API para gestionar aplicacion Kellun' }
+            description: 'API para gestionar aplicacion Kellun' },
+    servers: [
+      { url: 'https://kellun-project-api.onrender.com', description: 'Produccion' },
+      { url: 'http://localhost:3000',                   description: 'Local' }
+    ]
   },
   apis: ['./index.js']
 });
