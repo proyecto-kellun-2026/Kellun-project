@@ -20,24 +20,25 @@ app.post('/logros', (req, res) => {
   res.status(201).json({ idLogro: result.lastInsertRowid, nombreLogro, fechaObtencion, descripcion });
 });
 
-/*
+
 // PUT /logros/:id
-app.put('/logros/:id', (req, res) => {
+app.put('/logros/:idLogro', (req, res) => {
   const { nombreLogro, fechaObtencion, descripcion } = req.body;
   const info = db.prepare(
-    'UPDATE logros SET nombreLogro=?, fechaObtencion=?, descripcion=? WHERE id=?'
-  ).run(nombreLogro, fechaObtencion, descripcion, req.params.id);
+    'UPDATE logros SET nombreLogro=?, fechaObtencion=?, descripcion=? WHERE idLogro=?'
+  ).run(nombreLogro, fechaObtencion, descripcion, req.params.idLogro);
   if (info.changes === 0) return res.status(404).json({ error: 'Logro no encontrado' });
   res.json({ mensaje: 'Logro actualizado' });
 });
 
+
 // DELETE /logros/:id
-app.delete('/logros/:id', (req, res) => {
-  const info = db.prepare('DELETE FROM logros WHERE id=?').run(req.params.id);
+app.delete('/logros/:idLogro', (req, res) => {
+  const info = db.prepare('DELETE FROM logros WHERE idLogro=?').run(req.params.idLogro);
   if (info.changes === 0) return res.status(404).json({ error: 'Logro no encontrado' });
   res.json({ mensaje: 'Logro eliminado' });
 });
-*/
+
 app.listen(3000, () => {
   console.log('API corriendo en http://localhost:3000');
 });
