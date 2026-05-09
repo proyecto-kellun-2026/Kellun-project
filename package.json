@@ -1,0 +1,25 @@
+{
+  "name": "kellun-project",
+  "version": "1.0.0",
+  "description": "Para las personas interesadas en hacer voluntariados, no es fácil encontrar un espacio accesible para buscar de manera centralizada eventos a beneficencia confiables y cerca de tu zona geográfica. Para eso es el proyecto Kellun, el cual permite solucionar el problema de manera intuitiva y sin complicaciones, permitiendo a los voluntarios registrados acceder a información de voluntariados cerca de su zona y ver detalles del mismo, tales como: información sobre el evento, número de personas participantes y requerimientos para postularse, entre otros; permitiéndole inscribirse para participar en el evento.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/proyecto-kellun-2026/Kellun-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/proyecto-kellun-2026/Kellun-project/issues"
+  },
+  "homepage": "https://github.com/proyecto-kellun-2026/Kellun-project#readme",
+  "dependencies": {
+    "better-sqlite3": "^12.9.0",
+    "express": "^5.2.1"
+  }
+}
