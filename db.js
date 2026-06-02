@@ -4,10 +4,11 @@ const db = new Database('datos.db');
 db.exec(`
   CREATE TABLE IF NOT EXISTS logros (
     idLogro             INTEGER PRIMARY KEY AUTOINCREMENT,
+    voluntarioId        INTEGER NOT NULL,
     nombreLogro         TEXT NOT NULL,
     fechaObtencion      TEXT NOT NULL,
     descripcion         TEXT NOT NULL,
-    icono               TEXT NOT NULL
+    UNIQUE(voluntarioId, nombreLogro)
   )
 `);
 
