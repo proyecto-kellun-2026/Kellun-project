@@ -268,6 +268,10 @@ Actualización con el [feedback de Clarita Review](https://chatgpt.com/share/6a1
 | US-22 | Notificación automática por cambios en eventos | Sin cambios                                                          | [#31](https://github.com/proyecto-kellun-2026/Kellun-project/issues/31) |
 
 
+## Prueba API-Logros:
+
+![Prueba no permite duplicados](/img/Pruebas_APIlogros/Actualizacion de dato exitosa.png)
+
 
 
 
