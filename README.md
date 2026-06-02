@@ -239,31 +239,31 @@ Ver: [Arquitectura.md](./Arquitectura.md)
 | Raúl Sepúlveda   | Product Owner | Todos      |
 
 ## Historias de usuario
-Actulización con el [feedback de Clarita Review](https://chatgpt.com/share/6a1e2be0-1060-83e9-adaf-9e98b91aacea)
+Actualización con el [feedback de Clarita Review](https://chatgpt.com/share/6a1e3aa1-227c-83ea-950b-4148bcea5990)
 | ID | Nombre | Estado | Issue |
-| ----- | ---------------------------------------------- | -------------------------------------------------------- | ----------------------------------------------------------------------- |
-| US-01 | Registro de voluntario | Fusionada con US-02, mejorada con Clarita Review | [#13](https://github.com/proyecto-kellun-2026/Kellun-project/issues/13) |
-| US-02 | Datos de acceso | Elimininada, fusionada con US-01 | [#14](https://github.com/proyecto-kellun-2026/Kellun-project/issues/14) |
-| US-03 | Descripción perfil voluntario | Sin cambios | [#15](https://github.com/proyecto-kellun-2026/Kellun-project/issues/15) |
-| US-04 | Configuración de privacidad | Sin cambios | [#11](https://github.com/proyecto-kellun-2026/Kellun-project/issues/11) |
-| US-05 | Logros voluntarios | Sin cambios | [#9](https://github.com/proyecto-kellun-2026/Kellun-project/issues/9) |
-| US-06 | Registro organización | Sin cambios | [#16](https://github.com/proyecto-kellun-2026/Kellun-project/issues/16) |
-| US-07 | Validación perfil organización | Sin cambios | [#17](https://github.com/proyecto-kellun-2026/Kellun-project/issues/17) |
-| US-08 | Búsqueda de voluntariados por ubicación | Mejorada con Clarita Review | [#18](https://github.com/proyecto-kellun-2026/Kellun-project/issues/18) |
-| US-09 | Búsqueda de voluntariados por tipo | Sin cambios | [#19](https://github.com/proyecto-kellun-2026/Kellun-project/issues/19) |
-| US-10 | Requisitos exigidos a voluntarios | Fusionada con US-14, mejorada con Clarita Review | [#6](https://github.com/proyecto-kellun-2026/Kellun-project/issues/6) |
-| US-11 | Cantidad de voluntarios necesarios | Fusionada con US-12 y US-13, mejorada con Clarita Review | [#20](https://github.com/proyecto-kellun-2026/Kellun-project/issues/20) |
-| US-12 | Duración voluntariado | Elimininada, fusionada con US-11 | [#21](https://github.com/proyecto-kellun-2026/Kellun-project/issues/21) |
-| US-13 | Publicación de nuevos eventos | Elimininada, fusionada con US-11 | [#22](https://github.com/proyecto-kellun-2026/Kellun-project/issues/22) |
-| US-14 | Categorización de eventos por habilidades | Elimininada, fusionada con US-10 | [#23](https://github.com/proyecto-kellun-2026/Kellun-project/issues/23) |
-| US-15 | Visualización de agenda confirmada | Sin cambios | [#24](https://github.com/proyecto-kellun-2026/Kellun-project/issues/24) |
-| US-16 | Gestión de historial de postulaciones | Sin cambios | [#25](https://github.com/proyecto-kellun-2026/Kellun-project/issues/25) |
-| US-17 | Postulación a eventos | Sin cambios | [#26](https://github.com/proyecto-kellun-2026/Kellun-project/issues/26) |
-| US-18 | Resolución de postulaciones | Sin cambios | [#27](https://github.com/proyecto-kellun-2026/Kellun-project/issues/27) |
-| US-19 | Notificación de aceptación de postulación | Sin cambios | [#28](https://github.com/proyecto-kellun-2026/Kellun-project/issues/28) |
-| US-20 | Historial de notificaciones | Sin cambios | [#29](https://github.com/proyecto-kellun-2026/Kellun-project/issues/29) |
-| US-21 | Recordatorio de evento próximo | Sin cambios | [#30](https://github.com/proyecto-kellun-2026/Kellun-project/issues/30) |
-| US-22 | Notificación automática por cambios en eventos | Sin cambios | [#31](https://github.com/proyecto-kellun-2026/Kellun-project/issues/31) |
+| ----- | ---------------------------------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| US-01 | Registro de voluntario                         | Fusionada con US-02, mejorada con feedback de Clarita Review         | [#13](https://github.com/proyecto-kellun-2026/Kellun-project/issues/13) |
+| US-02 | Datos de acceso                                | Eliminada, fusionada con US-01                                       | [#14](https://github.com/proyecto-kellun-2026/Kellun-project/issues/14) |
+| US-03 | Descripción perfil voluntario                  | Sin cambios                                                          | [#15](https://github.com/proyecto-kellun-2026/Kellun-project/issues/15) |
+| US-04 | Configuración de privacidad                    | Sin cambios                                                          | [#11](https://github.com/proyecto-kellun-2026/Kellun-project/issues/11) |
+| US-05 | Logros voluntarios                             | Sin cambios                                                          |   [#9](https://github.com/proyecto-kellun-2026/Kellun-project/issues/9) |
+| US-06 | Registro organización                          | Sin cambios                                                          | [#16](https://github.com/proyecto-kellun-2026/Kellun-project/issues/16) |
+| US-07 | Validación perfil organización                 | Sin cambios                                                          | [#17](https://github.com/proyecto-kellun-2026/Kellun-project/issues/17) |
+| US-08 | Búsqueda de voluntariados por ubicación        | Mejorada con feedback de Clarita Review                              | [#18](https://github.com/proyecto-kellun-2026/Kellun-project/issues/18) |
+| US-09 | Búsqueda de voluntariados por tipo             | Sin cambios                                                          | [#19](https://github.com/proyecto-kellun-2026/Kellun-project/issues/19) |
+| US-10 | Requisitos exigidos a voluntarios              | Fusionada con US-14, mejorada con feedback de Clarita Review         |   [#6](https://github.com/proyecto-kellun-2026/Kellun-project/issues/6) |
+| US-11 | Cantidad de voluntarios necesarios             | Fusionada con US-12 y US-13, mejorada con feedback de Clarita Review | [#20](https://github.com/proyecto-kellun-2026/Kellun-project/issues/20) |
+| US-12 | Duración voluntariado                          | Eliminada, fusionada con US-11                                       | [#21](https://github.com/proyecto-kellun-2026/Kellun-project/issues/21) |
+| US-13 | Publicación de nuevos eventos                  | Eliminada, fusionada con US-11                                       | [#22](https://github.com/proyecto-kellun-2026/Kellun-project/issues/22) |
+| US-14 | Categorización de eventos por habilidades      | Eliminada, fusionada con US-10                                       | [#23](https://github.com/proyecto-kellun-2026/Kellun-project/issues/23) |
+| US-15 | Visualización de agenda confirmada             | Sin cambios                                                          | [#24](https://github.com/proyecto-kellun-2026/Kellun-project/issues/24) |
+| US-16 | Gestión de historial de postulaciones          | Sin cambios                                                          | [#25](https://github.com/proyecto-kellun-2026/Kellun-project/issues/25) |
+| US-17 | Postulación a eventos                          | Sin cambios                                                          | [#26](https://github.com/proyecto-kellun-2026/Kellun-project/issues/26) |
+| US-18 | Resolución de postulaciones                    | Sin cambios                                                          | [#27](https://github.com/proyecto-kellun-2026/Kellun-project/issues/27) |
+| US-19 | Notificación de aceptación de postulación      | Sin cambios                                                          | [#28](https://github.com/proyecto-kellun-2026/Kellun-project/issues/28) |
+| US-20 | Historial de notificaciones                    | Sin cambios                                                          | [#29](https://github.com/proyecto-kellun-2026/Kellun-project/issues/29) |
+| US-21 | Recordatorio de evento próximo                 | Sin cambios                                                          | [#30](https://github.com/proyecto-kellun-2026/Kellun-project/issues/30) |
+| US-22 | Notificación automática por cambios en eventos | Sin cambios                                                          | [#31](https://github.com/proyecto-kellun-2026/Kellun-project/issues/31) |
 
 
 
