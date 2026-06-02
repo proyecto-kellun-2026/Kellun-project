@@ -270,7 +270,16 @@ Actualización con el [feedback de Clarita Review](https://chatgpt.com/share/6a1
 
 ## Prueba API-Logros:
 
-[Prueba no permite duplicados](/img/Pruebas_APIlogros/Actualizacion%20de%20dato%20exitosa.png)
+[Prueba: Edición de datos](/img/Pruebas_APIlogros/Actualizacion%20de%20dato%20exitosa.png)
+[Prueba: Eliminación de logro](/img/Pruebas_APIlogros/Eliminacion%20de%20logro%20exitoso.png)
+[Prueba: Entrega de logros](/img/Pruebas_APIlogros/Entrega%20de%20lista%20de%20logros%20exitoso.png)
+[Prueba: Actualización de logros que no existen](img/Pruebas_APIlogros/No%20permite%20actualizar%20logros%20no%20existentes.png)
+[Prueba: Colocar datos vacios](img/Pruebas_APIlogros/No%20permite%20asignar%20a%20atributos%20de%20textos%20cadenas%20de%20caracteres%20vacia.png)
+[Prueba: Ingreso de un dato de distinto tipo](img/Pruebas_APIlogros/No%20permite%20asignar%20al%20atributo%20un%20dato%20con%20tipo%20erroneo.png)
+[Prueba: Ingreso de un dato extra](img/Pruebas_APIlogros/No%20permite%20crear%20logros%20con%20atributos%20extra.png)
+[Prueba: Falta de atributos](img/Pruebas_APIlogros/No%20permite%20crear%20logros%20con%20atributos%20faltantes.png)
+[Prueba: Duplicidad de logros](img/Pruebas_APIlogros/No%20permite%20duplicados.png)
+[Prueba: Eliminación de logros no existentes](img/Pruebas_APIlogros/No%20permite%20eliminar%20logros%20no%20existentes.png)
 
 
 
