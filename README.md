@@ -292,23 +292,23 @@ Actualización con el [feedback de Clarita Review](https://chatgpt.com/share/6a1
 
 ## Prueba API-registroOrganizaciones:
 
-[Prueba: Ingreso normal de una cuenta](/Pruebas_APIregistroOrganizaciones/)
+[Prueba: Ingreso normal de una cuenta](img/Pruebas_APIregistroOrganizaciones/)
 
-[Prueba: Colocando una clave corta](/Pruebas_APIregistroOrganizaciones/ClaveCorta.jpeg)
+[Prueba: Colocando una clave corta](img/Pruebas_APIregistroOrganizaciones/ClaveCorta.jpeg)
 
-[Prueba: Ingresando una contraseña vacia](/Pruebas_APIregistroOrganizaciones/ContraniaVacia.jpeg)
+[Prueba: Ingresando una contraseña vacia](img/Pruebas_APIregistroOrganizaciones/ContraniaVacia.jpeg)
 
-[Prueba: Correo ya registrado](/Pruebas_APIregistroOrganizaciones/Existente.jpeg)
+[Prueba: Correo ya registrado](img/Pruebas_APIregistroOrganizaciones/Existente.jpeg)
 
-[Prueba: Nombre de organización demasiado largo](/Pruebas_APIregistroOrganizaciones/NombreLargo.jpeg)
+[Prueba: Nombre de organización demasiado largo](img/Pruebas_APIregistroOrganizaciones/NombreLargo.jpeg)
 
-[Prueba: Nombre con solo números](/Pruebas_APIregistroOrganizaciones/NombreSinLetras)
+[Prueba: Nombre con solo números](img/Pruebas_APIregistroOrganizaciones/NombreSinLetras)
 
-[Prueba: Parametro extra](/Pruebas_APIregistroOrganizaciones/ParametroInventado.jpeg)
+[Prueba: Parametro extra](img/Pruebas_APIregistroOrganizaciones/ParametroInventado.jpeg)
 
-[Prueba: Correo sin dominio](/Pruebas_APIregistroOrganizaciones/SinDominio.jpeg)
+[Prueba: Correo sin dominio](img/Pruebas_APIregistroOrganizaciones/SinDominio.jpeg)
 
-[Prueba: Ingresando la letra 'ñ'](/Pruebas_APIregistroOrganizaciones/letra_enie.jpeg)
+[Prueba: Ingresando la letra 'ñ'](img/Pruebas_APIregistroOrganizaciones/letra_enie.jpeg)
 
 
 
