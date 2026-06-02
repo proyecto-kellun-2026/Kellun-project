@@ -290,6 +290,26 @@ Actualización con el [feedback de Clarita Review](https://chatgpt.com/share/6a1
 
 [Prueba: Eliminación de logros no existentes](img/Pruebas_APIlogros/No%20permite%20eliminar%20logros%20no%20existentes.png)
 
+## Prueba API-registroOrganizaciones:
+
+[Prueba: Ingreso normal de una cuenta](/Pruebas_APIregistroOrganizaciones/)
+
+[Prueba: Colocando una clave corta](/Pruebas_APIregistroOrganizaciones/ClaveCorta.jpeg)
+
+[Prueba: Ingresando una contraseña vacia](/Pruebas_APIregistroOrganizaciones/ContraniaVacia.jpeg)
+
+[Prueba: Correo ya registrado](/Pruebas_APIregistroOrganizaciones/Existente.jpeg)
+
+[Prueba: Nombre de organización demasiado largo](/Pruebas_APIregistroOrganizaciones/NombreLargo.jpeg)
+
+[Prueba: Nombre con solo números](/Pruebas_APIregistroOrganizaciones/NombreSinLetras)
+
+[Prueba: Parametro extra](/Pruebas_APIregistroOrganizaciones/ParametroInventado.jpeg)
+
+[Prueba: Correo sin dominio](/Pruebas_APIregistroOrganizaciones/SinDominio.jpeg)
+
+[Prueba: Ingresando la letra 'ñ'](/Pruebas_APIregistroOrganizaciones/letra_enie.jpeg)
+
 
 
 
