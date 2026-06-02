@@ -233,10 +233,10 @@ Ver: [Arquitectura.md](./Arquitectura.md)
 ## Responsabilidades del equipo
 | Integrante | Rol | Ítems de la rúbrica a cargo |
 |------------|-----|----------------------------|
-| Felipe Ossandón  | Developer | Todos          |
-| Felipe Rojas     | Scrum Master |  2, 3 y 4   |
-| Javiera Guerrero | Developer | Todos          |
-| Raúl Sepúlveda   | Product Owner | Todos      |
+| Felipe Ossandón  | Developer | [Todos]        |
+| Felipe Rojas     | Scrum Master |  [2, 3 y 4] |
+| Javiera Guerrero | Developer | [Todos]        |
+| Raúl Sepúlveda   | Product Owner | [Todos]    |
 
 ## Historias de usuario
 [Primer chat con Clarita Review](https://chatgpt.com/share/6a1ecfbf-f554-83e9-a2b6-d0072a8586b1)  
