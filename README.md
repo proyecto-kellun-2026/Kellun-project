@@ -228,3 +228,16 @@ Ver: [Arquitectura.md](./Arquitectura.md)
 | Paulo González   | Developers    | [1.1-2.2-2.3]               |
 | Felipe Ossándon  | Developers    | [1.1-1.2-2.4]               |
 
+# Entrega 2
+
+## Responsabilidades del equipo
+| Integrante | Rol | Ítems de la rúbrica a cargo |
+|------------|-----|----------------------------|
+| Felipe Ossandón  | Developer | Todos          |
+| Felipe Rojas     | Scrum Master |             |
+| Javiera Guerrero | Developer |                |
+| Raúl Sepúlveda   | Product Owner | 1, 2       |
+
+
+
+
