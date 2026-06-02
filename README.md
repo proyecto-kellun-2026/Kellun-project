@@ -239,7 +239,7 @@ Ver: [Arquitectura.md](./Arquitectura.md)
 | Raúl Sepúlveda   | Product Owner | Todos      |
 
 ## Historias de usuario
-[Primer chat con Clarita Review](https://chatgpt.com/share/6a1ecfbf-f554-83e9-a2b6-d0072a8586b1)
+[Primer chat con Clarita Review](https://chatgpt.com/share/6a1ecfbf-f554-83e9-a2b6-d0072a8586b1) \n
 Actualización con el [feedback de Clarita Review](https://chatgpt.com/share/6a1e3aa1-227c-83ea-950b-4148bcea5990)
 | ID | Nombre | Estado | Issue |
 | ----- | ---------------------------------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------- |
