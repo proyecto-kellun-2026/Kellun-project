@@ -58,11 +58,11 @@ app.get('/logros', (req, res) => {
  */
 // POST /logros
 app.post('/logros', (req, res) => {
-  const { nombreLogro, fechaObtencion, descripcion } = req.body;
+  const { nombreLogro, fechaObtencion, descripcion, icono } = req.body;
   const result = db.prepare(
-    'INSERT INTO logros (nombreLogro, fechaObtencion, descripcion) VALUES (?, ?, ?)'
-  ).run(nombreLogro, fechaObtencion, descripcion);
-  res.status(201).json({ idLogro: result.lastInsertRowid, nombreLogro, fechaObtencion, descripcion });
+    'INSERT INTO logros (nombreLogro, fechaObtencion, descripcion, icono) VALUES (?, ?, ?, ?)'
+  ).run(nombreLogro, fechaObtencion, descripcion, icono);
+  res.status(201).json({ idLogro: result.lastInsertRowid, nombreLogro, fechaObtencion, descripcion, icono });
 });
 
 
@@ -95,10 +95,10 @@ app.post('/logros', (req, res) => {
 
 // PUT /logros/:id
 app.put('/logros/:idLogro', (req, res) => {
-  const { nombreLogro, fechaObtencion, descripcion } = req.body;
+  const { nombreLogro, fechaObtencion, descripcion, icono } = req.body;
   const info = db.prepare(
-    'UPDATE logros SET nombreLogro=?, fechaObtencion=?, descripcion=? WHERE idLogro=?'
-  ).run(nombreLogro, fechaObtencion, descripcion, req.params.idLogro);
+    'UPDATE logros SET nombreLogro=?, fechaObtencion=?, descripcion=?, icono=? WHERE idLogro=?'
+  ).run(nombreLogro, fechaObtencion, descripcion, icono, req.params.idLogro);
   if (info.changes === 0) return res.status(404).json({ error: 'Logro no encontrado' });
   res.json({ mensaje: 'Logro actualizado' });
 });

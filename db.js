@@ -6,7 +6,8 @@ db.exec(`
     idLogro             INTEGER PRIMARY KEY AUTOINCREMENT,
     nombreLogro         TEXT NOT NULL,
     fechaObtencion      TEXT NOT NULL,
-    descripcion         TEXT NOT NULL
+    descripcion         TEXT NOT NULL,
+    icono               TEXT NOT NULL
   )
 `);
 
