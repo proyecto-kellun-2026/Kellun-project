@@ -10,18 +10,22 @@ const swaggerSpec = swaggerJsdoc({
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'API voluntariado',
+      title: 'API Kellun',
       version: '1.0.0',
-      description: 'API para gestionar aplicación Kellun'
+      description:
+        'API REST para la gestión de logros e insignias de voluntarios dentro de la plataforma Kellun.',
+      contact: {
+        name: 'Equipo Kellun'
+      }
     },
     servers: [
       {
-        url: 'https://kellun-project-api.onrender.com',
-        description: 'Producción'
+        url: 'http://localhost:3000',
+        description: 'Servidor local'
       },
       {
-        url: 'http://localhost:3000',
-        description: 'Local'
+        url: 'https://kellun-project-api.onrender.com',
+        description: 'Servidor producción'
       }
     ]
   },
@@ -64,10 +68,13 @@ function validarLogro(req, res, next) {
  * @swagger
  * /logros:
  *   get:
- *     summary: Lista todos los logros globales
+ *     tags:
+ *       - Logros
+ *     summary: Obtener todos los logros
+ *     description: Retorna una lista con todos los logros registrados en el sistema.
  *     responses:
  *       200:
- *         description: Array de logros
+ *         description: Lista de logros obtenida correctamente.
  */
 app.get('/logros', (req, res) => {
   const logros = db.prepare('SELECT * FROM logros').all();
@@ -78,16 +85,23 @@ app.get('/logros', (req, res) => {
  * @swagger
  * /voluntarios/{voluntarioId}/logros:
  *   get:
- *     summary: Lista las insignias de un voluntario específico
+ *     tags:
+ *       - Logros
+ *     summary: Obtener logros de un voluntario
+ *     description: Retorna todas las insignias asociadas a un voluntario específico.
  *     parameters:
  *       - in: path
  *         name: voluntarioId
  *         required: true
+ *         description: Identificador único del voluntario.
  *         schema:
  *           type: integer
+ *           example: 12345
  *     responses:
  *       200:
- *         description: Array de insignias del voluntario
+ *         description: Lista de logros obtenida correctamente.
+ *       404:
+ *         description: Voluntario no encontrado.
  */
 app.get('/voluntarios/:voluntarioId/logros', (req, res) => {
   const logros = db
@@ -101,7 +115,10 @@ app.get('/voluntarios/:voluntarioId/logros', (req, res) => {
  * @swagger
  * /logros:
  *   post:
- *     summary: Crea un nuevo logro manualmente
+ *     tags:
+ *       - Logros
+ *     summary: Crear un nuevo logro
+ *     description: Registra manualmente una insignia o logro para un voluntario.
  *     requestBody:
  *       required: true
  *       content:
@@ -116,17 +133,27 @@ app.get('/voluntarios/:voluntarioId/logros', (req, res) => {
  *             properties:
  *               voluntarioId:
  *                 type: integer
+ *                 description: Identificador único del voluntario.
+ *                 example: 12345
  *               nombreLogro:
  *                 type: string
+ *                 description: Nombre de la insignia obtenida.
+ *                 example: Primer Voluntariado
  *               fechaObtencion:
  *                 type: string
+ *                 description: Fecha de obtención del logro.
+ *                 example: 2026-06-02
  *               descripcion:
  *                 type: string
+ *                 description: Descripción detallada del logro.
+ *                 example: Participó exitosamente en su primer voluntariado.
  *     responses:
  *       201:
- *         description: Logro creado con éxito
+ *         description: Logro creado correctamente.
  *       400:
- *         description: Error de validación o logro duplicado
+ *         description: Error de validación o logro duplicado.
+ *       500:
+ *         description: Error interno del servidor.
  */
 app.post('/logros', validarLogro, (req, res) => {
   const {
@@ -170,18 +197,25 @@ app.post('/logros', validarLogro, (req, res) => {
  * @swagger
  * /voluntarios/{voluntarioId}/completar-actividad:
  *   post:
- *     summary: Completa una actividad y otorga la insignia automática si corresponde
+ *     tags:
+ *       - Logros
+ *     summary: Completar actividad
+ *     description: Registra una actividad completada y asigna automáticamente la insignia inicial si corresponde.
  *     parameters:
  *       - in: path
  *         name: voluntarioId
  *         required: true
+ *         description: Identificador único del voluntario.
  *         schema:
  *           type: integer
+ *           example: 12345
  *     responses:
  *       201:
- *         description: Insignia otorgada automáticamente
+ *         description: Insignia automática otorgada.
  *       200:
- *         description: Actividad registrada sin nueva insignia
+ *         description: Actividad registrada sin asignar nuevas insignias.
+ *       400:
+ *         description: ID inválido o error al generar la insignia.
  */
 app.post('/voluntarios/:voluntarioId/completar-actividad', (req, res) => {
   const voluntarioId = parseInt(req.params.voluntarioId, 10);
@@ -240,35 +274,49 @@ app.post('/voluntarios/:voluntarioId/completar-actividad', (req, res) => {
  * @swagger
  * /logros/{idLogro}:
  *   put:
- *     summary: Modifica un logro existente
+ *     tags:
+ *       - Logros
+ *     summary: Actualizar un logro
+ *     description: Modifica la información de un logro existente.
  *     parameters:
  *       - in: path
  *         name: idLogro
  *         required: true
+ *         description: Identificador único del logro.
  *         schema:
  *           type: integer
+ *           example: 1
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
  *             type: object
+ *             required:
+ *               - voluntarioId
+ *               - nombreLogro
+ *               - fechaObtencion
+ *               - descripcion
  *             properties:
  *               voluntarioId:
  *                 type: integer
+ *                 example: 12345
  *               nombreLogro:
  *                 type: string
+ *                 example: Primer Voluntariado
  *               fechaObtencion:
  *                 type: string
+ *                 example: 2026-06-02
  *               descripcion:
  *                 type: string
+ *                 example: Participó exitosamente en su primer voluntariado.
  *     responses:
  *       200:
- *         description: Logro actualizado
+ *         description: Logro actualizado correctamente.
  *       400:
- *         description: Error de validación
+ *         description: Error de validación.
  *       404:
- *         description: Logro no encontrado
+ *         description: Logro no encontrado.
  */
 app.put('/logros/:idLogro', validarLogro, (req, res) => {
   const {
@@ -310,18 +358,23 @@ app.put('/logros/:idLogro', validarLogro, (req, res) => {
  * @swagger
  * /logros/{idLogro}:
  *   delete:
- *     summary: Elimina un logro
+ *     tags:
+ *       - Logros
+ *     summary: Eliminar un logro
+ *     description: Elimina un logro existente mediante su identificador.
  *     parameters:
  *       - in: path
  *         name: idLogro
  *         required: true
+ *         description: Identificador único del logro.
  *         schema:
  *           type: integer
+ *           example: 1
  *     responses:
  *       200:
- *         description: Logro eliminado
+ *         description: Logro eliminado correctamente.
  *       404:
- *         description: Logro no encontrado
+ *         description: Logro no encontrado.
  */
 app.delete('/logros/:idLogro', (req, res) => {
   const info = db
