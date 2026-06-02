@@ -270,7 +270,7 @@ Actualización con el [feedback de Clarita Review](https://chatgpt.com/share/6a1
 
 ## Prueba API-Logros:
 
-![Prueba no permite duplicados](/img/Pruebas_APIlogros/Actualizacion%20de%20dato%20exitosa.png)
+[Prueba no permite duplicados](/img/Pruebas_APIlogros/Actualizacion%20de%20dato%20exitosa.png)
 
 
 
