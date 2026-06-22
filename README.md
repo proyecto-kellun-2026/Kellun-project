@@ -1,3 +1,51 @@
+# Entrega 3
+
+# [Nombre del Sistema]
+ 
+## Descripción del sistema
+[Breve descripción del problema y solución propuesta]
+ 
+## Historia de usuario implementada
+| ID    | Nombre                    | Issue |
+|-------|---------------------------|-------|
+| US-09 | Búsqueda de voluntariados por tipo | [#19](https://github.com/proyecto-kellun-2026/Kellun-project/issues/19) |
+ 
+## Artefactos del proyecto
+| Artefacto                          | Ubicación / enlace          |
+|------------------------------------|-----------------------------|
+| Modelo de dominio                  | [enlace o imagen]           |
+| Diagrama de casos de uso           | [enlace o imagen]           |
+| Especificación de HU               | ./EspecificacionHU.md       |
+| Diagrama de estados                | [enlace o imagen]           |
+| Diagrama de despliegue y comp.     | [enlace o imagen]           |
+| Diagrama de componentes            | [enlace o imagen]           |
+| Diagrama de secuencia              | [enlace o imagen]           |
+| Casos de prueba                    | ./CasosDePrueba.md          |
+| Deuda técnica / code smells        | ./DeudaTecnica.md           |
+ 
+## Instrucciones de instalación y ejecución
+### Requisitos previos
+[Lenguaje/versión, base de datos, Docker, etc.]
+### Variables de entorno
+[Lista de variables necesarias]
+### Instalación y ejecución (sin Docker)
+[Comandos paso a paso]
+### Instalación y ejecución (con Docker)  <!-- si aplica (bonus) -->
+docker-compose up --build
+ 
+## Responsabilidades del equipo
+| Integrante       | Rol(es)                   | Ítems de la rúbrica a cargo |
+|------------------|---------------------------|-----------------------------|
+| Javiera Guerrero | Arquitecta                | [Ítems]                     |
+| Felipe Ossandón  | Quality Assurance         | [Ítems]                     |
+| Felipe Rojas     | Technical Lead, Developer | [Ítems]                     |
+| Raúl Sepúlveda   | Scrum Master              | [Ítems]                     |
+
+## Bonus
+- Contenedores: [sí/no] — docker-compose en ./docker-compose.yml
+- Spec-driven development: [sí/no] — especificaciones en ./openspecs/
+
+
 # Kellun
 
 ## Descripción del sistema
@@ -311,54 +359,6 @@ Actualización con el [feedback de Clarita Review](https://chatgpt.com/share/6a1
 [Prueba: Ingresando la letra 'ñ'](img/Pruebas_APIregistroOrganizaciones/letra_enie.jpeg)
 
 
-
-
-# Entrega 3
-
-# [Nombre del Sistema]
- 
-## Descripción del sistema
-[Breve descripción del problema y solución propuesta]
- 
-## Historia de usuario implementada
-| ID    | Nombre                    | Issue |
-|-------|---------------------------|-------|
-| US-09 | Búsqueda de voluntariados por tipo | [#19](https://github.com/proyecto-kellun-2026/Kellun-project/issues/19) |
- 
-## Artefactos del proyecto
-| Artefacto                          | Ubicación / enlace          |
-|------------------------------------|-----------------------------|
-| Modelo de dominio                  | [enlace o imagen]           |
-| Diagrama de casos de uso           | [enlace o imagen]           |
-| Especificación de HU               | ./EspecificacionHU.md       |
-| Diagrama de estados                | [enlace o imagen]           |
-| Diagrama de despliegue y comp.     | [enlace o imagen]           |
-| Diagrama de componentes            | [enlace o imagen]           |
-| Diagrama de secuencia              | [enlace o imagen]           |
-| Casos de prueba                    | ./CasosDePrueba.md          |
-| Deuda técnica / code smells        | ./DeudaTecnica.md           |
- 
-## Instrucciones de instalación y ejecución
-### Requisitos previos
-[Lenguaje/versión, base de datos, Docker, etc.]
-### Variables de entorno
-[Lista de variables necesarias]
-### Instalación y ejecución (sin Docker)
-[Comandos paso a paso]
-### Instalación y ejecución (con Docker)  <!-- si aplica (bonus) -->
-docker-compose up --build
- 
-## Responsabilidades del equipo
-| Integrante       | Rol(es)                   | Ítems de la rúbrica a cargo |
-|------------------|---------------------------|-----------------------------|
-| Javiera Guerrero | Arquitecta                | [Ítems]                     |
-| Felipe Ossandón  | Quality Assurance         | [Ítems]                     |
-| Felipe Rojas     | Technical Lead, Developer | [Ítems]                     |
-| Raúl Sepúlveda   | Scrum Master              | [Ítems]                     |
-
-## Bonus (opcional)
-- Contenedores: [sí/no] — docker-compose en ./docker-compose.yml
-- Spec-driven development: [sí/no] — especificaciones en ./openspecs/
 
 
 
