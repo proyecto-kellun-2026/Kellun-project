@@ -5,7 +5,7 @@ const voluntariadoService = require('../services/voluntariadoService');
  * Permite filtrar por tipo y/o realizar búsqueda por texto (q).
  * Retorna 200 con la lista (puede ser vacía) o 400 si los parámetros son inválidos.
  */
-function listarVoluntariados(req, res) {
+async function listarVoluntariados(req, res) {
   try {
     const { tipo, q } = req.query;
 
@@ -22,7 +22,7 @@ function listarVoluntariados(req, res) {
       });
     }
 
-    const voluntariados = voluntariadoService.getVoluntariadosActivos(tipo, q);
+    const voluntariados = await voluntariadoService.getVoluntariadosActivos(tipo, q);
     return res.status(200).json(voluntariados);
   } catch (error) {
     console.error('Error en listarVoluntariados:', error);
@@ -36,9 +36,9 @@ function listarVoluntariados(req, res) {
  * Controlador para listar tipos únicos de voluntariados activos.
  * Retorna 200 con la lista de tipos o 500 ante un error.
  */
-function listarTipos(req, res) {
+async function listarTipos(req, res) {
   try {
-    const tipos = voluntariadoService.getTiposActivos();
+    const tipos = await voluntariadoService.getTiposActivos();
     return res.status(200).json(tipos);
   } catch (error) {
     console.error('Error en listarTipos:', error);

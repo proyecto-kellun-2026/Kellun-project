@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: kellun-db
+    restart: always
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    environment:
+      POSTGRES_USER: ${DB_USER:-kellun_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-kellun_password}
+      POSTGRES_DB: ${DB_NAME:-kellun_db}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    container_name: kellun-api
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      PORT: 3000
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER:-kellun_user}
+      DB_PASSWORD: ${DB_PASSWORD:-kellun_password}
+      DB_NAME: ${DB_NAME:-kellun_db}
+
+  frontend:
+    build: ./frontend
+    container_name: kellun-frontend
+    restart: always
+    ports:
+      - "3001:3000"
+    depends_on:
+      - api
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3000
+
+volumes:
+  postgres_data:
