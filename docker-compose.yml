@@ -28,5 +28,16 @@ services:
       DB_PASSWORD: ${DB_PASSWORD:-kellun_password}
       DB_NAME: ${DB_NAME:-kellun_db}
 
+  frontend:
+    build: ./frontend
+    container_name: kellun-frontend
+    restart: always
+    ports:
+      - "3001:3000"
+    depends_on:
+      - api
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3000
+
 volumes:
   postgres_data:
