@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/proyecto-kellun-2026/Kellun-project#readme",
   "dependencies": {
-    "better-sqlite3": "^12.11.1",
     "dotenv": "^16.4.5",
     "express": "^5.2.1",
     "pg": "^8.12.0",

@@ -10,6 +10,23 @@ const pool = new Pool({
 });
 
 const initDb = async () => {
+  let retries = 5;
+  while (retries > 0) {
+    try {
+      await pool.query('SELECT 1');
+      console.log('Conectado a la base de datos PostgreSQL exitosamente.');
+      break;
+    } catch (err) {
+      retries--;
+      console.log(`La base de datos no está lista. Intentando conectar... Reintentos restantes: ${retries}. Esperando 3 segundos...`);
+      if (retries === 0) {
+        console.error('No se pudo conectar a PostgreSQL después de múltiples intentos. Saliendo...');
+        process.exit(1);
+      }
+      await new Promise(resolve => setTimeout(resolve, 3000));
+    }
+  }
+
   try {
     await pool.query(`
       CREATE TABLE IF NOT EXISTS logros (
