@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kellun - Conecta con voluntariados y eventos solidarios cerca de ti. Filtra por categoría y encuentra causas que te inspiren.">
+  <title>Buscador de Voluntariados | Kellun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Fondos difuminados dinámicos -->
+  <div class="background-glow bg-glow-1"></div>
+  <div class="background-glow bg-glow-2"></div>
+
+  <div class="app-container">
+    <header class="app-header">
+      <div class="logo-container">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="url(#logo-grad)"/>
+          <defs>
+            <linearGradient id="logo-grad" x1="2" y1="3" x2="22" y2="21.35" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#8B5CF6" />
+              <stop offset="100%" stop-color="#EC4899" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <h1 class="logo-text">Kellun</h1>
+      </div>
+      <p class="subtitle">Conecta con voluntariados y haz la diferencia hoy</p>
+      <a href="/docs" target="_blank" class="docs-link" id="btn-api-docs">Ver API Docs</a>
+    </header>
+
+    <main class="main-content">
+      <!-- Filtros y campo de búsqueda -->
+      <section class="search-section glass-panel">
+        <form id="search-form" class="search-form" onsubmit="event.preventDefault();">
+          <div class="input-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="search-input" placeholder="Buscar voluntariados por título o descripción..." aria-label="Buscar voluntariados">
+          </div>
+          
+          <div class="select-wrapper">
+            <select id="tipo-filter" aria-label="Filtrar por tipo de voluntariado">
+              <option value="">Todos los tipos</option>
+            </select>
+          </div>
+          
+          <button type="submit" id="btn-buscar" class="btn-primary">Buscar</button>
+        </form>
+      </section>
+
+      <!-- Resultados -->
+      <section class="results-section">
+        <div class="results-header">
+          <h2 class="section-title">Oportunidades de Voluntariado</h2>
+          <span id="results-count" class="badge">0 resultados</span>
+        </div>
+
+        <div id="volunteerings-container" class="volunteerings-grid">
+          <!-- Las tarjetas de voluntariados se cargarán dinámicamente aquí -->
+        </div>
+
+        <!-- Estado Vacío -->
+        <div id="empty-state" class="empty-state glass-panel hidden">
+          <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M16 16s-1.5-2-4-2-4 2-4 2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+          <h3>No se encontraron voluntariados</h3>
+          <p>No existen voluntariados activos que coincidan con tu búsqueda en este momento.</p>
+          <button id="btn-reset" class="btn-secondary">Restablecer filtros</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>&copy; 2026 Proyecto Kellun. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+
+  <!-- Componente Toast de notificación -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
