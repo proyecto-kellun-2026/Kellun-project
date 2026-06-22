@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/proyecto-kellun-2026/Kellun-project#readme",
   "dependencies": {
-    "better-sqlite3": "^12.9.0",
+    "better-sqlite3": "^12.11.1",
     "express": "^5.2.1",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
