@@ -1,9 +1,9 @@
 # Entrega 3
 
-# [Nombre del Sistema]
+# Kellun-Project
  
 ## Descripción del sistema
-[Breve descripción del problema y solución propuesta]
+Implementacion de un motor de busqueda que filtra los voluntariados por tipo y una barra de busqueda para titulos y descripciones.
  
 ## Historia de usuario implementada
 | ID    | Nombre                    | Issue |
@@ -13,37 +13,125 @@
 ## Artefactos del proyecto
 | Artefacto                          | Ubicación / enlace          |
 |------------------------------------|-----------------------------|
-| Modelo de dominio                  | [enlace o imagen]           |
-| Diagrama de casos de uso           | [enlace o imagen]           |
-| Especificación de HU               | ./EspecificacionHU.md       |
-| Diagrama de estados                | [enlace o imagen]           |
-| Diagrama de despliegue y comp.     | [enlace o imagen]           |
-| Diagrama de componentes            | [enlace o imagen]           |
-| Diagrama de secuencia              | [enlace o imagen]           |
-| Casos de prueba                    | ./CasosDePrueba.md          |
-| Deuda técnica / code smells        | ./DeudaTecnica.md           |
+| Modelo de dominio                  | [enlace](https://github.com/proyecto-kellun-2026/Kellun-project/blob/main/img/Puntos_2_y_3/modeloDeDominio.png)         |
+| Diagrama de casos de uso           | [enlace](https://github.com/proyecto-kellun-2026/Kellun-project/blob/main/img/Puntos_2_y_3/DiagramaDeCasoDeUso.png)           |
+| Especificación de HU               | [./EspecificacionHU.md](https://github.com/proyecto-kellun-2026/Kellun-project/blob/main/EspecificacionHU.md)       |
+| Diagrama de estados                | [enlace](https://github.com/proyecto-kellun-2026/Kellun-project/blob/main/img/Puntos_2_y_3/diagramaDeEstado.png)           |
+| Diagrama de despliegue y comp.     | [enlace](https://github.com/proyecto-kellun-2026/Kellun-project/blob/main/img/Puntos_2_y_3/diagramaDeDespliegue.png)           |
+| Diagrama de componentes            | [enlace](https://github.com/proyecto-kellun-2026/Kellun-project/blob/main/img/Puntos_2_y_3/diagramaDeComponentes.png)           |
+| Diagrama de secuencia              | [enlace](https://github.com/proyecto-kellun-2026/Kellun-project/blob/main/img/Puntos_2_y_3/diagramaDeSecuencia.png)           |
+| Casos de prueba                    | [./CasosDePrueba.md](https://github.com/proyecto-kellun-2026/Kellun-project/blob/main/CasosDePrueba.md)          |
+| Deuda técnica / code smells        | [./DeudaTecnica.md](https://github.com/proyecto-kellun-2026/Kellun-project/blob/main/DeudaTecnica.md)           |
  
 ## Instrucciones de instalación y ejecución
-### Requisitos previos
-[Lenguaje/versión, base de datos, Docker, etc.]
-### Variables de entorno
-[Lista de variables necesarias]
-### Instalación y ejecución (sin Docker)
-[Comandos paso a paso]
-### Instalación y ejecución (con Docker)  <!-- si aplica (bonus) -->
-docker-compose up --build
+### Prerrequisitos
+
+Para ejecutar el proyecto, necesitarás tener instalado lo siguiente en tu sistema operativo:
+
+1.  **Docker & Docker Compose** (Opción Recomendada).
+2.  **Node.js v18** o superior (si deseas correrlo localmente sin Docker).
+3.  **PostgreSQL v15** o superior (si deseas correrlo localmente sin Docker).
+
+---
+
+### Paso 0: Configuración de Variables de Entorno
+
+Antes de iniciar cualquier servicio, debes crear un archivo de configuración `.env` en la raíz del proyecto para definir los accesos a la base de datos y puertos:
+
+1.  Copia el archivo de ejemplo `.env.example` y renombralo como `.env`:
+    ```bash
+    cp .env.example .env
+    ```
+2.  Las variables de entorno configuradas por defecto en `.env` son:
+    *   `PORT=3000`: Puerto principal de la API del backend (Voluntariados y Logros).
+    *   `PORT_ORGS=4000`: Puerto de la API de Organizaciones.
+    *   `DB_HOST=localhost`: Host del servidor PostgreSQL.
+    *   `DB_PORT=5432`: Puerto de conexión a PostgreSQL.
+    *   `DB_USER=kellun_user`: Usuario de la base de datos.
+    *   `DB_PASSWORD=kellun_password`: Contraseña del usuario.
+    *   `DB_NAME=kellun_db`: Nombre de la base de datos.
+
+---
+
+### Opción A: Ejecución con Docker Compose (Recomendado)
+
+Esta opción automatiza el levantamiento de la base de datos, el backend y el frontend en contenedores aislados.
+
+1.  Asegúrate de que el daemon de Docker esté activo.
+2.  Desde la raíz del proyecto, ejecuta el siguiente comando para compilar e iniciar los contenedores en primer plano:
+    ```bash
+    docker-compose up --build
+    ```
+    *(Añade el parámetro `-d` al final si deseas ejecutar los contenedores en segundo plano).*
+
+#### Puertos y Servicios Disponibles con Docker:
+*   **Base de datos (PostgreSQL)**: Puerto `5432` local mapeado al contenedor.
+*   **API Backend (index.js)**: [http://localhost:3000](http://localhost:3000).
+*   **Documentación Swagger (API Docs)**: [http://localhost:3000/docs](http://localhost:3000/docs).
+*   **Frontend (Next.js)**: [http://localhost:3001](http://localhost:3001).
+
+> [!NOTE]
+> La inicialización de la base de datos y la creación de tablas con datos semilla (seeds) se realiza de forma automática al levantar el servicio `db` y la `api` por primera vez.
+
+---
+
+### Opción B: Ejecución Local en Modo Desarrollo (Sin Docker)
+
+Si prefieres ejecutar los servicios directamente en tu máquina local paso a paso, sigue las siguientes instrucciones:
+
+#### 1. Preparar la Base de Datos PostgreSQL
+1.  Asegúrate de tener un servidor PostgreSQL activo localmente.
+2.  Accede a tu cliente de PostgreSQL (como pgAdmin, DBeaver o psql) y crea una base de datos con el nombre especificado en tu archivo `.env` (por defecto `kellun_db`).
+3.  Asegúrate de que las credenciales definidas en tu archivo `.env` correspondan a un usuario con privilegios de creación en dicha base de datos.
+
+#### 2. Iniciar el Backend
+1.  Abre una terminal en la raíz del proyecto.
+2.  Instala las dependencias declaradas en `package.json`:
+    ```bash
+    npm install
+    ```
+3.  Ejecuta el servidor principal de la API `index.js`:
+    ```bash
+    npm start
+    ```
+    *Esto levantará el backend en el puerto `3000` y creará las tablas `logros` y `voluntariados` en tu base de datos local con datos de prueba.*
+
+4.  **(Opcional - Servicio de Organizaciones)**: Si deseas usar el servicio de registro de organizaciones `index2.js`, abre otra terminal en la raíz del proyecto y ejecuta:
+    ```bash
+    node index2.js
+    ```
+    *Esto levantará el servicio en el puerto `4000` y creará la tabla `registroOrganizaciones`.*
+
+#### 3. Iniciar el Frontend (Next.js)
+1.  Abre una terminal nueva y dirígete a la carpeta `frontend`:
+    ```bash
+    cd frontend
+    ```
+2.  Instala las dependencias del frontend declaradas en `frontend/package.json`:
+    ```bash
+    npm install
+    ```
+3.  Crea un archivo `.env.local` dentro del directorio `frontend/` y define la URL de la API del backend:
+    ```env
+    NEXT_PUBLIC_API_URL=http://localhost:3000
+    ```
+4.  Inicia el servidor Next.js en modo de desarrollo:
+    ```bash
+    npm run dev
+    ```
+5.  Abre tu navegador en [http://localhost:3000](http://localhost:3000) (o el puerto que te indique la consola si el puerto 3000 ya está ocupado por la API).
  
 ## Responsabilidades del equipo
-| Integrante       | Rol(es)                   | Ítems de la rúbrica a cargo |
-|------------------|---------------------------|-----------------------------|
-| Javiera Guerrero | Arquitecta                | [Ítems]                     |
-| Felipe Ossandón  | Quality Assurance         | [Ítems]                     |
-| Felipe Rojas     | Technical Lead, Developer | [Ítems]                     |
-| Raúl Sepúlveda   | Scrum Master              | [Ítems]                     |
+| Integrante       | Rol(es)                   | Ítems de la rúbrica a cargo  |
+|------------------|---------------------------|------------------------------|
+| Javiera Guerrero | Arquitecta                | [1.3,2.1,2.2,2.4,3.1,3.2,3.3]|
+| Felipe Ossandón  | Quality Assurance         | [1.1,1.3,4.1]                |
+| Felipe Rojas     | Technical Lead, Developer | [1.1.1.2,1.3,5.1]            |
+| Raúl Sepúlveda   | Scrum Master              | [1.3,2.3]                    |
 
 ## Bonus
-- Contenedores: [sí/no] — docker-compose en ./docker-compose.yml
-- Spec-driven development: [sí/no] — especificaciones en ./openspecs/
+- Contenedores: sí — docker-compose en ./docker-compose.yml
+- Spec-driven development: sí — especificaciones en ./openspecs/
 
 
 # Kellun
