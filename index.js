@@ -2,9 +2,12 @@ const express = require('express');
 const db = require('./db');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
+const voluntariadosRouter = require('./routes/voluntariados');
 
 const app = express();
 app.use(express.json());
+app.use(express.static('public'));
+app.use('/api/voluntariados', voluntariadosRouter);
 
 const swaggerSpec = swaggerJsdoc({
   definition: {
