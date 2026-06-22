@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const db = require('./db');
 const swaggerUi = require('swagger-ui-express');
@@ -109,9 +110,14 @@ function validarVoluntariado(req, res, next) {
  *       200:
  *         description: Lista de logros obtenida correctamente.
  */
-app.get('/logros', (req, res) => {
-  const logros = db.prepare('SELECT * FROM logros').all();
-  res.json(logros);
+app.get('/logros', async (req, res) => {
+  try {
+    const result = await db.query('SELECT * FROM logros');
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Error en GET /logros:', error);
+    res.status(500).json({ error: 'Error interno del servidor.' });
+  }
 });
 
 /**
@@ -136,12 +142,17 @@ app.get('/logros', (req, res) => {
  *       404:
  *         description: Voluntario no encontrado.
  */
-app.get('/voluntarios/:voluntarioId/logros', (req, res) => {
-  const logros = db
-    .prepare('SELECT * FROM logros WHERE voluntarioId = ?')
-    .all(req.params.voluntarioId);
-
-  res.json(logros);
+app.get('/voluntarios/:voluntarioId/logros', async (req, res) => {
+  try {
+    const result = await db.query(
+      'SELECT * FROM logros WHERE "voluntarioId" = $1',
+      [req.params.voluntarioId]
+    );
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Error en GET /voluntarios/:voluntarioId/logros:', error);
+    res.status(500).json({ error: 'Error interno del servidor.' });
+  }
 });
 
 /**
@@ -188,7 +199,7 @@ app.get('/voluntarios/:voluntarioId/logros', (req, res) => {
  *       500:
  *         description: Error interno del servidor.
  */
-app.post('/logros', validarLogro, (req, res) => {
+app.post('/logros', validarLogro, async (req, res) => {
   const {
     voluntarioId,
     nombreLogro,
@@ -197,29 +208,25 @@ app.post('/logros', validarLogro, (req, res) => {
   } = req.body;
 
   try {
-    const result = db.prepare(
-      'INSERT INTO logros (voluntarioId, nombreLogro, fechaObtencion, descripcion) VALUES (?, ?, ?, ?)'
-    ).run(
-      voluntarioId,
-      nombreLogro,
-      fechaObtencion,
-      descripcion
+    const result = await db.query(
+      'INSERT INTO logros ("voluntarioId", "nombreLogro", "fechaObtencion", descripcion) VALUES ($1, $2, $3, $4) RETURNING "idLogro"',
+      [voluntarioId, nombreLogro, fechaObtencion, descripcion]
     );
 
     res.status(201).json({
-      idLogro: result.lastInsertRowid,
+      idLogro: result.rows[0].idLogro,
       voluntarioId,
       nombreLogro,
       fechaObtencion,
       descripcion
     });
   } catch (error) {
-    if (error.code === 'SQLITE_CONSTRAINT_UNIQUE') {
+    if (error.code === '23505') {
       return res.status(400).json({
         error: 'El voluntario ya posee esta insignia.'
       });
     }
-
+    console.error('Error en POST /logros:', error);
     res.status(500).json({
       error: 'Error interno del servidor.'
     });
@@ -250,7 +257,7 @@ app.post('/logros', validarLogro, (req, res) => {
  *       400:
  *         description: ID inválido o error al generar la insignia.
  */
-app.post('/voluntarios/:voluntarioId/completar-actividad', (req, res) => {
+app.post('/voluntarios/:voluntarioId/completar-actividad', async (req, res) => {
   const voluntarioId = parseInt(req.params.voluntarioId, 10);
 
   if (isNaN(voluntarioId)) {
@@ -259,48 +266,47 @@ app.post('/voluntarios/:voluntarioId/completar-actividad', (req, res) => {
     });
   }
 
-  const conteoInsignias = db.prepare(
-    'SELECT COUNT(*) as total FROM logros WHERE voluntarioId = ?'
-  ).get(voluntarioId);
+  try {
+    const conteoRes = await db.query(
+      'SELECT COUNT(*) as total FROM logros WHERE "voluntarioId" = $1',
+      [voluntarioId]
+    );
+    const total = parseInt(conteoRes.rows[0].total, 10);
 
-  if (conteoInsignias.total === 0) {
-    const nombreLogro = 'Colaborador Iniciado';
-    const fechaObtencion = new Date().toISOString().split('T')[0];
-    const descripcion =
-      'Otorgada automáticamente al validar su primera actividad de voluntariado.';
+    if (total === 0) {
+      const nombreLogro = 'Colaborador Iniciado';
+      const fechaObtencion = new Date().toISOString().split('T')[0];
+      const descripcion =
+        'Otorgada automáticamente al validar su primera actividad de voluntariado.';
 
-    try {
-      const result = db.prepare(
-        'INSERT INTO logros (voluntarioId, nombreLogro, fechaObtencion, descripcion) VALUES (?, ?, ?, ?)'
-      ).run(
-        voluntarioId,
-        nombreLogro,
-        fechaObtencion,
-        descripcion
+      const result = await db.query(
+        'INSERT INTO logros ("voluntarioId", "nombreLogro", "fechaObtencion", descripcion) VALUES ($1, $2, $3, $4) RETURNING "idLogro"',
+        [voluntarioId, nombreLogro, fechaObtencion, descripcion]
       );
 
       return res.status(201).json({
         mensaje:
           '¡Primera actividad completada! Sistema validado de forma automática.',
         insignia: {
-          idLogro: result.lastInsertRowid,
+          idLogro: result.rows[0].idLogro,
           voluntarioId,
           nombreLogro,
           fechaObtencion,
           descripcion
         }
       });
-    } catch (error) {
-      return res.status(400).json({
-        error: 'Error al generar la insignia automática.'
-      });
     }
-  }
 
-  res.json({
-    mensaje:
-      'Actividad registrada con éxito. El voluntario ya cuenta con insignias previas.'
-  });
+    res.json({
+      mensaje:
+        'Actividad registrada con éxito. El voluntario ya cuenta con insignias previas.'
+    });
+  } catch (error) {
+    console.error('Error en POST /completar-actividad:', error);
+    return res.status(400).json({
+      error: 'Error al generar la insignia automática.'
+    });
+  }
 });
 
 /**
@@ -351,7 +357,7 @@ app.post('/voluntarios/:voluntarioId/completar-actividad', (req, res) => {
  *       404:
  *         description: Logro no encontrado.
  */
-app.put('/logros/:idLogro', validarLogro, (req, res) => {
+app.put('/logros/:idLogro', validarLogro, async (req, res) => {
   const {
     voluntarioId,
     nombreLogro,
@@ -360,17 +366,18 @@ app.put('/logros/:idLogro', validarLogro, (req, res) => {
   } = req.body;
 
   try {
-    const info = db.prepare(
-      'UPDATE logros SET voluntarioId=?, nombreLogro=?, fechaObtencion=?, descripcion=? WHERE idLogro=?'
-    ).run(
-      voluntarioId,
-      nombreLogro,
-      fechaObtencion,
-      descripcion,
-      req.params.idLogro
+    const info = await db.query(
+      'UPDATE logros SET "voluntarioId"=$1, "nombreLogro"=$2, "fechaObtencion"=$3, descripcion=$4 WHERE "idLogro"=$5',
+      [
+        voluntarioId,
+        nombreLogro,
+        fechaObtencion,
+        descripcion,
+        req.params.idLogro
+      ]
     );
 
-    if (info.changes === 0) {
+    if (info.rowCount === 0) {
       return res.status(404).json({
         error: 'Logro no encontrado'
       });
@@ -380,6 +387,7 @@ app.put('/logros/:idLogro', validarLogro, (req, res) => {
       mensaje: 'Logro actualizado exitosamente'
     });
   } catch (error) {
+    console.error('Error en PUT /logros/:idLogro:', error);
     res.status(400).json({
       error:
         'Error al actualizar el logro (posible duplicado).'
@@ -409,20 +417,28 @@ app.put('/logros/:idLogro', validarLogro, (req, res) => {
  *       404:
  *         description: Logro no encontrado.
  */
-app.delete('/logros/:idLogro', (req, res) => {
-  const info = db
-    .prepare('DELETE FROM logros WHERE idLogro=?')
-    .run(req.params.idLogro);
+app.delete('/logros/:idLogro', async (req, res) => {
+  try {
+    const info = await db.query(
+      'DELETE FROM logros WHERE "idLogro"=$1',
+      [req.params.idLogro]
+    );
 
-  if (info.changes === 0) {
-    return res.status(404).json({
-      error: 'Logro no encontrado'
+    if (info.rowCount === 0) {
+      return res.status(404).json({
+        error: 'Logro no encontrado'
+      });
+    }
+
+    res.json({
+      mensaje: 'Logro eliminado'
+    });
+  } catch (error) {
+    console.error('Error en DELETE /logros/:idLogro:', error);
+    res.status(500).json({
+      error: 'Error interno del servidor.'
     });
   }
-
-  res.json({
-    mensaje: 'Logro eliminado'
-  });
 });
 
 /**
@@ -448,25 +464,32 @@ app.delete('/logros/:idLogro', (req, res) => {
  *       200:
  *         description: Lista de voluntariados.
  */
-app.get('/voluntariados', (req, res) => {
+app.get('/voluntariados', async (req, res) => {
   const { tipo, activo } = req.query;
 
   let sql = 'SELECT * FROM voluntariados WHERE 1=1';
   const params = [];
+  let paramCount = 1;
 
   if (tipo) {
-    sql += ' AND tipo = ?';
+    sql += ` AND tipo = $${paramCount++}`;
     params.push(tipo);
   }
 
   if (activo !== undefined) {
-    sql += ' AND activo = ?';
+    sql += ` AND activo = $${paramCount++}`;
     params.push(Number(activo));
   }
 
-  const voluntariados = db.prepare(sql).all(...params);
-
-  res.json(voluntariados);
+  try {
+    const result = await db.query(sql, params);
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Error en GET /voluntariados:', error);
+    res.status(500).json({
+      error: 'Error interno del servidor.'
+    });
+  }
 });
 
 /**
@@ -488,18 +511,26 @@ app.get('/voluntariados', (req, res) => {
  *       404:
  *         description: Voluntariado no encontrado.
  */
-app.get('/voluntariados/:id', (req, res) => {
-  const voluntariado = db.prepare(
-    'SELECT * FROM voluntariados WHERE idVoluntariado = ?'
-  ).get(req.params.id);
+app.get('/voluntariados/:id', async (req, res) => {
+  try {
+    const result = await db.query(
+      'SELECT * FROM voluntariados WHERE "idVoluntariado" = $1',
+      [req.params.id]
+    );
 
-  if (!voluntariado) {
-    return res.status(404).json({
-      error: 'Voluntariado no encontrado'
+    if (result.rows.length === 0) {
+      return res.status(404).json({
+        error: 'Voluntariado no encontrado'
+      });
+    }
+
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Error en GET /voluntariados/:id:', error);
+    res.status(500).json({
+      error: 'Error interno del servidor.'
     });
   }
-
-  res.json(voluntariado);
 });
 
 /**
@@ -534,27 +565,31 @@ app.get('/voluntariados/:id', (req, res) => {
  *       201:
  *         description: Voluntariado creado correctamente.
  */
-app.post('/voluntariados', validarVoluntariado, (req, res) => {
+app.post('/voluntariados', validarVoluntariado, async (req, res) => {
   const { titulo, descripcion, tipo, activo } = req.body;
 
-  const result = db.prepare(
-    `INSERT INTO voluntariados
-    (titulo, descripcion, tipo, activo)
-    VALUES (?, ?, ?, ?)`
-  ).run(
-    titulo,
-    descripcion,
-    tipo,
-    activo
-  );
+  try {
+    const result = await db.query(
+      `INSERT INTO voluntariados
+      (titulo, descripcion, tipo, activo)
+      VALUES ($1, $2, $3, $4)
+      RETURNING "idVoluntariado"`,
+      [titulo, descripcion, tipo, activo]
+    );
 
-  res.status(201).json({
-    idVoluntariado: result.lastInsertRowid,
-    titulo,
-    descripcion,
-    tipo,
-    activo
-  });
+    res.status(201).json({
+      idVoluntariado: result.rows[0].idVoluntariado,
+      titulo,
+      descripcion,
+      tipo,
+      activo
+    });
+  } catch (error) {
+    console.error('Error en POST /voluntariados:', error);
+    res.status(500).json({
+      error: 'Error interno del servidor.'
+    });
+  }
 });
 
 /**
@@ -587,30 +622,32 @@ app.post('/voluntariados', validarVoluntariado, (req, res) => {
  *       404:
  *         description: Voluntariado no encontrado.
  */
-app.put('/voluntariados/:id', validarVoluntariado, (req, res) => {
+app.put('/voluntariados/:id', validarVoluntariado, async (req, res) => {
   const { titulo, descripcion, tipo, activo } = req.body;
 
-  const info = db.prepare(
-    `UPDATE voluntariados
-     SET titulo=?, descripcion=?, tipo=?, activo=?
-     WHERE idVoluntariado=?`
-  ).run(
-    titulo,
-    descripcion,
-    tipo,
-    activo,
-    req.params.id
-  );
+  try {
+    const info = await db.query(
+      `UPDATE voluntariados
+       SET titulo=$1, descripcion=$2, tipo=$3, activo=$4
+       WHERE "idVoluntariado"=$5`,
+      [titulo, descripcion, tipo, activo, req.params.id]
+    );
 
-  if (info.changes === 0) {
-    return res.status(404).json({
-      error: 'Voluntariado no encontrado'
+    if (info.rowCount === 0) {
+      return res.status(404).json({
+        error: 'Voluntariado no encontrado'
+      });
+    }
+
+    res.json({
+      mensaje: 'Voluntariado actualizado correctamente'
+    });
+  } catch (error) {
+    console.error('Error en PUT /voluntariados/:id:', error);
+    res.status(500).json({
+      error: 'Error interno del servidor.'
     });
   }
-
-  res.json({
-    mensaje: 'Voluntariado actualizado correctamente'
-  });
 });
 
 /**
@@ -632,23 +669,32 @@ app.put('/voluntariados/:id', validarVoluntariado, (req, res) => {
  *       404:
  *         description: Voluntariado no encontrado.
  */
-app.delete('/voluntariados/:id', (req, res) => {
-  const info = db.prepare(
-    'DELETE FROM voluntariados WHERE idVoluntariado = ?'
-  ).run(req.params.id);
+app.delete('/voluntariados/:id', async (req, res) => {
+  try {
+    const info = await db.query(
+      'DELETE FROM voluntariados WHERE "idVoluntariado" = $1',
+      [req.params.id]
+    );
 
-  if (info.changes === 0) {
-    return res.status(404).json({
-      error: 'Voluntariado no encontrado'
+    if (info.rowCount === 0) {
+      return res.status(404).json({
+        error: 'Voluntariado no encontrado'
+      });
+    }
+
+    res.json({
+      mensaje: 'Voluntariado eliminado correctamente'
+    });
+  } catch (error) {
+    console.error('Error en DELETE /voluntariados/:id:', error);
+    res.status(500).json({
+      error: 'Error interno del servidor.'
     });
   }
-
-  res.json({
-    mensaje: 'Voluntariado eliminado correctamente'
-  });
 });
 
-app.listen(3000, () => {
-  console.log('API corriendo en http://localhost:3000');
-  console.log('Swagger disponible en http://localhost:3000/docs');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`API corriendo en http://localhost:${PORT}`);
+  console.log(`Swagger disponible en http://localhost:${PORT}/docs`);
 });
