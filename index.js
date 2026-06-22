@@ -64,6 +64,36 @@ function validarLogro(req, res, next) {
   next();
 }
 
+function validarVoluntariado(req, res, next) {
+  const { titulo, descripcion, tipo, activo } = req.body;
+
+  if (typeof titulo !== 'string' || titulo.trim() === '') {
+    return res.status(400).json({
+      error: "El atributo 'titulo' debe ser una cadena de texto no vacía."
+    });
+  }
+
+  if (typeof descripcion !== 'string' || descripcion.trim() === '') {
+    return res.status(400).json({
+      error: "El atributo 'descripcion' debe ser una cadena de texto no vacía."
+    });
+  }
+
+  if (typeof tipo !== 'string' || tipo.trim() === '') {
+    return res.status(400).json({
+      error: "El atributo 'tipo' debe ser una cadena de texto no vacía."
+    });
+  }
+
+  if (activo !== 0 && activo !== 1) {
+    return res.status(400).json({
+      error: "El atributo 'activo' debe ser 0 o 1."
+    });
+  }
+
+  next();
+}
+
 /**
  * @swagger
  * /logros:
@@ -389,6 +419,229 @@ app.delete('/logros/:idLogro', (req, res) => {
 
   res.json({
     mensaje: 'Logro eliminado'
+  });
+});
+
+/**
+ * @swagger
+ * /voluntariados:
+ *   get:
+ *     tags:
+ *       - Voluntariados
+ *     summary: Obtener voluntariados
+ *     description: Retorna todos los voluntariados o permite filtrarlos por tipo y estado.
+ *     parameters:
+ *       - in: query
+ *         name: tipo
+ *         schema:
+ *           type: string
+ *         example: limpieza
+ *       - in: query
+ *         name: activo
+ *         schema:
+ *           type: integer
+ *         example: 1
+ *     responses:
+ *       200:
+ *         description: Lista de voluntariados.
+ */
+app.get('/voluntariados', (req, res) => {
+  const { tipo, activo } = req.query;
+
+  let sql = 'SELECT * FROM voluntariados WHERE 1=1';
+  const params = [];
+
+  if (tipo) {
+    sql += ' AND tipo = ?';
+    params.push(tipo);
+  }
+
+  if (activo !== undefined) {
+    sql += ' AND activo = ?';
+    params.push(Number(activo));
+  }
+
+  const voluntariados = db.prepare(sql).all(...params);
+
+  res.json(voluntariados);
+});
+
+/**
+ * @swagger
+ * /voluntariados/{id}:
+ *   get:
+ *     tags:
+ *       - Voluntariados
+ *     summary: Obtener voluntariado por ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Voluntariado encontrado.
+ *       404:
+ *         description: Voluntariado no encontrado.
+ */
+app.get('/voluntariados/:id', (req, res) => {
+  const voluntariado = db.prepare(
+    'SELECT * FROM voluntariados WHERE idVoluntariado = ?'
+  ).get(req.params.id);
+
+  if (!voluntariado) {
+    return res.status(404).json({
+      error: 'Voluntariado no encontrado'
+    });
+  }
+
+  res.json(voluntariado);
+});
+
+/**
+ * @swagger
+ * /voluntariados:
+ *   post:
+ *     tags:
+ *       - Voluntariados
+ *     summary: Crear voluntariado
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - titulo
+ *               - descripcion
+ *               - tipo
+ *               - activo
+ *             properties:
+ *               titulo:
+ *                 type: string
+ *               descripcion:
+ *                 type: string
+ *               tipo:
+ *                 type: string
+ *               activo:
+ *                 type: integer
+ *                 example: 1
+ *     responses:
+ *       201:
+ *         description: Voluntariado creado correctamente.
+ */
+app.post('/voluntariados', validarVoluntariado, (req, res) => {
+  const { titulo, descripcion, tipo, activo } = req.body;
+
+  const result = db.prepare(
+    `INSERT INTO voluntariados
+    (titulo, descripcion, tipo, activo)
+    VALUES (?, ?, ?, ?)`
+  ).run(
+    titulo,
+    descripcion,
+    tipo,
+    activo
+  );
+
+  res.status(201).json({
+    idVoluntariado: result.lastInsertRowid,
+    titulo,
+    descripcion,
+    tipo,
+    activo
+  });
+});
+
+/**
+ * @swagger
+ * /voluntariados/{id}:
+ *   put:
+ *     tags:
+ *       - Voluntariados
+ *     summary: Actualizar voluntariado
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - titulo
+ *               - descripcion
+ *               - tipo
+ *               - activo
+ *     responses:
+ *       200:
+ *         description: Voluntariado actualizado.
+ *       404:
+ *         description: Voluntariado no encontrado.
+ */
+app.put('/voluntariados/:id', validarVoluntariado, (req, res) => {
+  const { titulo, descripcion, tipo, activo } = req.body;
+
+  const info = db.prepare(
+    `UPDATE voluntariados
+     SET titulo=?, descripcion=?, tipo=?, activo=?
+     WHERE idVoluntariado=?`
+  ).run(
+    titulo,
+    descripcion,
+    tipo,
+    activo,
+    req.params.id
+  );
+
+  if (info.changes === 0) {
+    return res.status(404).json({
+      error: 'Voluntariado no encontrado'
+    });
+  }
+
+  res.json({
+    mensaje: 'Voluntariado actualizado correctamente'
+  });
+});
+
+/**
+ * @swagger
+ * /voluntariados/{id}:
+ *   delete:
+ *     tags:
+ *       - Voluntariados
+ *     summary: Eliminar voluntariado
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Voluntariado eliminado.
+ *       404:
+ *         description: Voluntariado no encontrado.
+ */
+app.delete('/voluntariados/:id', (req, res) => {
+  const info = db.prepare(
+    'DELETE FROM voluntariados WHERE idVoluntariado = ?'
+  ).run(req.params.id);
+
+  if (info.changes === 0) {
+    return res.status(404).json({
+      error: 'Voluntariado no encontrado'
+    });
+  }
+
+  res.json({
+    mensaje: 'Voluntariado eliminado correctamente'
   });
 });
 
